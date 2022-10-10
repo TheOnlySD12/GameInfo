@@ -1,0 +1,2 @@
+Mecanica unica.
+-Ciobanul are trei oi care vin dupa el. Le vom programa sa l urmareasca peste tot si cand nu au cum sa ajunga la el se vor teleporta cand ajungi la un checkpoint. Pe aceste oi le poti lua in brate si le poti arunca in aer. Putem implementa un dash ca sa dai dash spre oaie in midair si sa sari de pe ea. Ca un fel de double jump mai greu. Vom pune un buton care va chema una dintre cele trei oi si iti va da un dash mare in fata.
