@@ -7,8 +7,8 @@ public class MovementScript : MonoBehaviour
 {
     //declaram variabile
     
-    public float runSpeed;
-    public float jumpSpeed;
+    private float runSpeed = 7;
+    private float jumpSpeed = 7;
     
     
     public bool isGrounded = true;
@@ -26,6 +26,7 @@ public class MovementScript : MonoBehaviour
             isGrounded = false;
             
         }
+        Debug.Log(rb.velocity.y);
         //DE ADAUGAT GROUNDCHECK:
         //pentru performanta ca sa nu dea check la fiecare frame, verifican daca are ceva sub el doar cand atinge alt collider.
     }
