@@ -7,14 +7,14 @@ public class MovementScript : MonoBehaviour
 {
     //declaram variabile
     
-    public float runSpeed;
-    public float jumpSpeed;
+    private float runSpeed = 7;
+    private float jumpSpeed = 7;
     
     
     public bool isGrounded = true;
 
     public Rigidbody2D rb;
-    
+    //public BoxCollider2D col;
     void Update()
     {
         //movement
@@ -26,8 +26,13 @@ public class MovementScript : MonoBehaviour
             isGrounded = false;
             
         }
-        //DE ADAUGAT GROUNDCHECK:
-        //pentru performanta ca sa nu dea check la fiecare frame, verifican daca are ceva sub el doar cand atinge alt collider.
+        Debug.Log(rb.velocity.y);
+        if (Input.GetButton(""))
+        {
+            //col.size.y = col.size.y / 2;
+        }
+        //DE ADAUGAT CROUCH
+        //Ar trebui sa faca collider-ul sa isi injumatateasca marimea y.
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
