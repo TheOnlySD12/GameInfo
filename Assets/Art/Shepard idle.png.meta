@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d7d84ea6df4f87a4081f3ed0cd380e0e
+guid: 906c11794d403b246a69c7fa9d64c9a5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Astronaut run anim_0
+      name: Shepard idle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c1bcb392209cdb4a91ad1cbf848606d
-      internalID: -58197142
+      spriteID: c72bba9965650dd44ac642fcb67dfbfd
+      internalID: -467975659
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Astronaut run anim_1
+      name: Shepard idle_1
       rect:
         serializedVersion: 2
         x: 32
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82e404bba5238ab4c8a76393dfe93151
-      internalID: 239030931
+      spriteID: eed394285af0d8a40a325b9fffe0987a
+      internalID: 736381108
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Astronaut run anim_2
+      name: Shepard idle_2
       rect:
         serializedVersion: 2
         x: 64
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b3bd95dddf06814ba578fba96ae10fd
-      internalID: -187331627
+      spriteID: eba176e7a825f794687a11b0ea9f1b79
+      internalID: 957912284
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Astronaut run anim_3
+      name: Shepard idle_3
       rect:
         serializedVersion: 2
         x: 96
@@ -194,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57bf0bdf4920b8040bbdd1890a0a25cd
-      internalID: 699232893
+      spriteID: e9b01fc344965d1478ed89a1528d4f3a
+      internalID: 1198394268
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Astronaut run anim_4
+      name: Shepard idle_4
       rect:
         serializedVersion: 2
         x: 128
@@ -215,29 +215,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c3c8c4f8bd2a234ea11a47d75aa543e
-      internalID: 261450756
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Astronaut run anim_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d425bc72e2a7f024591f18f66a51570e
-      internalID: 986889616
+      spriteID: 5d54924b90cde1949a518cc0ffd425fe
+      internalID: -1419640862
       vertices: []
       indices: 
       edges: []
@@ -253,12 +232,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Astronaut run anim_3: 699232893
-      Astronaut run anim_5: 986889616
-      Astronaut run anim_1: 239030931
-      Astronaut run anim_4: 261450756
-      Astronaut run anim_2: -187331627
-      Astronaut run anim_0: -58197142
+      Shepard idle_2: 957912284
+      Shepard idle_3: 1198394268
+      Shepard idle_0: -467975659
+      Shepard idle_1: 736381108
+      Shepard idle_4: -1419640862
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
