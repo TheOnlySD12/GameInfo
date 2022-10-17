@@ -27,7 +27,7 @@ public class MovementScript : MonoBehaviour
             
         }
         Debug.Log(rb.velocity.y);
-        if (Input.GetButton(""))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             //col.size.y = col.size.y / 2;
         }

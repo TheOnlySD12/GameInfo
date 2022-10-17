@@ -15,7 +15,7 @@ public class PlayerCombat : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.x))
+        if (Input.GetKeyDown(KeyCode.X))
         {
 
             Attack();
@@ -27,7 +27,7 @@ public class PlayerCombat : MonoBehaviour
     void Attack()
     {
 
-        GetComponent<Animation>().SetTrigger("Attack");
+        animator.SetTrigger("Attack");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
@@ -35,6 +35,15 @@ public class PlayerCombat : MonoBehaviour
             Debug.Log("We hit " + enemy.name);
 
         }
+
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
 
     }
 
