@@ -5,7 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/SavesMenu.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    guid: 2a6906de431243f4784e4c42d8daa4fb
+  - enabled: 1
+    path: Assets/Scenes/Map.unity
+    guid: b8a3368475a1dd3418b1758aded71f06
+  - enabled: 1
+    path: Assets/Scenes/movement test.unity
+    guid: 791e1c7519c3191499d620f4c00b4278
+  - enabled: 1
+    path: Assets/Scenes/PauseMenuRaul.unity
+    guid: 30c43402ea450b646ab017221f24b90c
   m_configObjects: {}
