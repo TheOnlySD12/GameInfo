@@ -13,7 +13,7 @@ public class Movement : MonoBehaviour
 
     private Vector3 respawnPoint;
     public GameObject FallDetector;
-
+    //private double falltimer = 0;
 
     void Start()
     {
@@ -30,7 +30,7 @@ public class Movement : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y); //mers orizontal
 
