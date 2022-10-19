@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 314026441}
   m_Layer: 3
   m_Name: Square (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 1560156421}
   m_Layer: 3
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -486,9 +486,9 @@ GameObject:
   - component: {fileID: 1684990524}
   - component: {fileID: 1684990523}
   - component: {fileID: 1684990522}
-  - component: {fileID: 1684990521}
   - component: {fileID: 1684990526}
   - component: {fileID: 1684990527}
+  - component: {fileID: 1684990528}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -496,20 +496,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1684990521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1684990520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01449ad60ca29b6418c2e038f9c909ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isGrounded: 1
-  rb: {fileID: 1684990522}
 --- !u!50 &1684990522
 Rigidbody2D:
   serializedVersion: 4
@@ -663,6 +649,21 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &1684990528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684990520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68937c18be39d5442917423b108c4f8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  jumpspeed: 5
+  FallDetector: {fileID: 0}
 --- !u!1 &2037824541
 GameObject:
   m_ObjectHideFlags: 0
