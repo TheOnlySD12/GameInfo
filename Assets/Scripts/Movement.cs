@@ -11,14 +11,18 @@ public class Movement : MonoBehaviour
 
     bool facingRight;
 
-    private Vector3 respawnPoint;
-    public GameObject FallDetector;
-    //private double falltimer = 0;
+    //private Vector3 respawnPoint;
+    //public GameObject FallDetector;
 
-    void Start()
-    {
-        respawnPoint = transform.position;
-    }
+    private double falltimer = 0.5;
+
+
+
+
+   // void Start()
+   // {
+     //   respawnPoint = transform.position;
+   // }
 
 
 
@@ -30,16 +34,21 @@ public class Movement : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y); //mers orizontal
-
-        if (Input.GetButtonDown("Jump") && !isjumping)  //sarit
+        if (Input.GetButton("Jump") && (!isjumping || falltimer>0))  //sarit
         {
             body.velocity = new Vector2(body.velocity.x, jumpspeed);    //sarit
             isjumping = true;
+            falltimer -= Time.deltaTime;
         }
-
+        if (Input.GetButtonUp("Jump"))
+        {
+            falltimer = 0; 
+           
+        }
+        
         if (Input.GetAxisRaw("Horizontal") < 0 && !facingRight)
         {         // se intoarce stanaga/ dreapta
             Flip();
@@ -50,25 +59,25 @@ public class Movement : MonoBehaviour
             Flip();
         }
 
-        FallDetector.transform.position = new Vector2(transform.position.x, transform.position.y);
+     //  FallDetector.transform.position = new Vector2(transform.position.x, transform.position.y);
 
 
 
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "FallDetector")
-        {
-            transform.position = respawnPoint;
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+       // if (collision.tag == "FallDetector")
+      //  {
+        //    transform.position = respawnPoint;
 
-        }
-        if (collision.tag == "NextLevelPlace")
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-    }
+      //  }
+      //  if (collision.tag == "NextLevelPlace")
+       // {
+       //     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //}
+    //}
 
 
 
@@ -77,10 +86,10 @@ public class Movement : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {     //check daca e pe pamant
             isjumping = false;
-
+            falltimer = 0.25;
         }
     }
-
+    
     void Flip()
     {
 
