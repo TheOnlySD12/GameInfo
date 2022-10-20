@@ -13,7 +13,7 @@ public class Movement : MonoBehaviour
 
     private Vector3 respawnPoint;
     public GameObject FallDetector;
-    //private double falltimer = 0;
+    private double falltimer = 0.5;
 
     void Start()
     {
@@ -33,13 +33,17 @@ public class Movement : MonoBehaviour
     private void FixedUpdate()
     {
         body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y); //mers orizontal
-
-        if (Input.GetButtonDown("Jump") && !isjumping)  //sarit
+        if (Input.GetButton("Jump") && (!isjumping || falltimer>0))  //sarit
         {
             body.velocity = new Vector2(body.velocity.x, jumpspeed);    //sarit
             isjumping = true;
+            falltimer -= Time.deltaTime;
         }
-
+        if (Input.GetButtonUp("Jump"))
+        {
+            falltimer = 0;
+        }
+        
         if (Input.GetAxisRaw("Horizontal") < 0 && !facingRight)
         {         // se intoarce stanaga/ dreapta
             Flip();
@@ -77,7 +81,7 @@ public class Movement : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {     //check daca e pe pamant
             isjumping = false;
-
+            falltimer = 0.25;
         }
     }
 
