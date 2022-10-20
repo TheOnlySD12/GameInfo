@@ -1,4 +1,9 @@
-/*public class PauseMenu : MonoBehaviour   
+/*
+
+
+
+
+public class PauseMenu : MonoBehaviour   
 {
 
     public static bool GameIsPaused = false;
@@ -45,7 +50,6 @@
     public void QuitQame()
     {
         Debug.Log("Quitting game...");
-        global::System.Object Value = Application.Quit();
+        Application.Quit();
     }
-}
-*/
+}*/
