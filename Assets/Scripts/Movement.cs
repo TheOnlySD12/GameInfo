@@ -11,14 +11,23 @@ public class Movement : MonoBehaviour
 
     bool facingRight;
 
+<<<<<<< Updated upstream
     private Vector3 respawnPoint;
     //public GameObject FallDetector;
+=======
+    //private Vector3 respawnPoint;
+    //public GameObject FallDetector;
+
+>>>>>>> Stashed changes
     private double falltimer = 0.5;
 
-    void Start()
-    {
-        respawnPoint = transform.position;
-    }
+
+
+
+   // void Start()
+   // {
+     //   respawnPoint = transform.position;
+   // }
 
 
 
@@ -30,7 +39,7 @@ public class Movement : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y); //mers orizontal
         if (Input.GetButton("Jump") && (!isjumping || falltimer>0))  //sarit
@@ -41,7 +50,8 @@ public class Movement : MonoBehaviour
         }
         if (Input.GetButtonUp("Jump"))
         {
-            falltimer = 0;
+            falltimer = 0; 
+           
         }
         
         if (Input.GetAxisRaw("Horizontal") < 0 && !facingRight)
@@ -54,25 +64,29 @@ public class Movement : MonoBehaviour
             Flip();
         }
 
+<<<<<<< Updated upstream
         //FallDetector.transform.position = new Vector2(transform.position.x, transform.position.y);
+=======
+      //  FallDetector.transform.position = new Vector2(transform.position.x, transform.position.y);
+>>>>>>> Stashed changes
 
 
 
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "FallDetector")
-        {
-            transform.position = respawnPoint;
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+       // if (collision.tag == "FallDetector")
+      //  {
+        //    transform.position = respawnPoint;
 
-        }
-        if (collision.tag == "NextLevelPlace")
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-    }
+      //  }
+      //  if (collision.tag == "NextLevelPlace")
+       // {
+       //     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //}
+    //}
 
 
 
@@ -84,7 +98,7 @@ public class Movement : MonoBehaviour
             falltimer = 0.25;
         }
     }
-
+    
     void Flip()
     {
 
