@@ -11,18 +11,18 @@ public class Movement : MonoBehaviour
 
     bool facingRight;
 
-    //private Vector3 respawnPoint;
-    //public GameObject FallDetector;
+    private Vector3 respawnPoint;
+    public GameObject fallDetector;
 
     private double falltimer = 0.5;
 
 
+    
 
-
-   // void Start()
-   // {
-     //   respawnPoint = transform.position;
-   // }
+    void Start()
+    {
+        respawnPoint = transform.position;
+    }
 
 
 
@@ -35,6 +35,11 @@ public class Movement : MonoBehaviour
     }
 
     private void Update()
+    {
+        Update(fallDetector);
+    }
+
+    private void Update(GameObject fallDetector)
     {
         body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y); //mers orizontal
         if (Input.GetButton("Jump") && (!isjumping || falltimer>0))  //sarit
@@ -59,25 +64,25 @@ public class Movement : MonoBehaviour
             Flip();
         }
 
-     //  FallDetector.transform.position = new Vector2(transform.position.x, transform.position.y);
+        fallDetector.transform.position = new Vector2(transform.position.x, transform.position.y);
 
 
 
 
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-       // if (collision.tag == "FallDetector")
-      //  {
-        //    transform.position = respawnPoint;
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "FallDetector")
+        {
+            transform.position = respawnPoint;
 
-      //  }
-      //  if (collision.tag == "NextLevelPlace")
-       // {
-       //     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        //}
-    //}
+        }
+        //if (collision.tag == "NextLevelPlace")
+      //  {
+           // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+       // }
+    }
 
 
 
