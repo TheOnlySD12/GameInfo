@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
-public class PauseMenu : MonoBehaviour 
+public class PauseMenu : MonoBehaviour   
 {
 
     public static bool GameIsPaused = false;
@@ -16,38 +11,40 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-        if (GameIsPaused) 
+            if (GameIsPaused)
             {
-             Resume();
-            }else
+                Resume();
+            }
+            else
             {
-             Pause();
+                Pause();
             }
         }
     }
 
-    public void Resume () 
+    public void Resume()
     {
-       PauseMenuUI.SetActive(true);
-       Time.timeScale = 1f;
-       GameIsPaused = false;    
+        PauseMenuUI.SetActive(true);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
     }
 
-    void Pause ()
+    void Pause()
     {
-       PauseMenuUI.SetActive(true);
-       Time.timeScale = 0f;
-       GameIsPaused = true;
+        PauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
     }
 
     public void LoadMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
     }
 
     public void QuitQame()
     {
         Debug.Log("Quitting game...");
-        Application.Quit();
+        global::System.Object Value = Application.Quit();
     }
 }
