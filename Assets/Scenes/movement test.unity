@@ -663,8 +663,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jumpspeed: 10
-<<<<<<< Updated upstream
-=======
 --- !u!1 &1821920593
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,7 +822,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
->>>>>>> Stashed changes
 --- !u!1 &2037824541
 GameObject:
   m_ObjectHideFlags: 0

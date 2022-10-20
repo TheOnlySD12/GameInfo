@@ -11,14 +11,9 @@ public class Movement : MonoBehaviour
 
     bool facingRight;
 
-<<<<<<< Updated upstream
-    private Vector3 respawnPoint;
-    //public GameObject FallDetector;
-=======
     //private Vector3 respawnPoint;
     //public GameObject FallDetector;
 
->>>>>>> Stashed changes
     private double falltimer = 0.5;
 
 
@@ -64,11 +59,7 @@ public class Movement : MonoBehaviour
             Flip();
         }
 
-<<<<<<< Updated upstream
-        //FallDetector.transform.position = new Vector2(transform.position.x, transform.position.y);
-=======
-      //  FallDetector.transform.position = new Vector2(transform.position.x, transform.position.y);
->>>>>>> Stashed changes
+     //  FallDetector.transform.position = new Vector2(transform.position.x, transform.position.y);
 
 
 
