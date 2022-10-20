@@ -643,12 +643,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0853f9c3ac6e654cbe97af78970681a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 1684990526}
   attackPoint: {fileID: 590650196}
   attackRange: 0.95
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!114 &1684990528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,7 +663,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jumpspeed: 10
-  FallDetector: {fileID: 0}
 --- !u!1 &2037824541
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,7 +676,7 @@ GameObject:
   - component: {fileID: 2037824544}
   - component: {fileID: 2037824543}
   - component: {fileID: 2037824542}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     bool facingRight;
 
     private Vector3 respawnPoint;
-    public GameObject FallDetector;
+    //public GameObject FallDetector;
     private double falltimer = 0.5;
 
     void Start()
@@ -54,7 +54,7 @@ public class Movement : MonoBehaviour
             Flip();
         }
 
-        FallDetector.transform.position = new Vector2(transform.position.x, transform.position.y);
+        //FallDetector.transform.position = new Vector2(transform.position.x, transform.position.y);
 
 
 
