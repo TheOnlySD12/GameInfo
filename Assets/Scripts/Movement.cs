@@ -17,14 +17,13 @@ public class Movement : MonoBehaviour
     private double falltimer = 0.5;
 
 
-    
 
-    void Start()
+
+    /*void Start()
     {
         respawnPoint = transform.position;
     }
-
-
+    */
 
 
 
@@ -41,6 +40,7 @@ public class Movement : MonoBehaviour
 
     private void Update(GameObject fallDetector)
     {
+
         body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y); //mers orizontal
         if (Input.GetButton("Jump") && (!isjumping || falltimer>0))  //sarit
         {
@@ -66,9 +66,9 @@ public class Movement : MonoBehaviour
 
         fallDetector.transform.position = new Vector2(transform.position.x, transform.position.y);
 
+        
 
-
-
+     
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
