@@ -1,2 +1,2 @@
 # GameInfo
-A game full of sheep
+A game full of mega sheep
