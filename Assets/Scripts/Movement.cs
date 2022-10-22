@@ -43,6 +43,7 @@ public class Movement : MonoBehaviour
         body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y); //mers orizontal
         if (Input.GetButton("Jump") && (!isjumping || falltimer>0))  //sarit
         {
+            
             body.velocity = new Vector2(body.velocity.x, jumpspeed);    //sarit
             isjumping = true;
             falltimer -= Time.deltaTime;

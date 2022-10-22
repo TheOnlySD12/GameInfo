@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int maxHealth = 100;
+    public int maxHealth = 200;
     int currentHealth;
     public GameObject InamicFunctieDestroy;
     public float delayMoarte;
