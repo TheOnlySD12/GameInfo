@@ -6,6 +6,8 @@ public class Enemy : MonoBehaviour
 {
     public int maxHealth = 100;
     int currentHealth;
+    public GameObject InamicFunctieDestroy;
+    public float delayMoarte;
 
     void Start()
     {
@@ -27,6 +29,7 @@ public class Enemy : MonoBehaviour
     {
 
         Debug.Log("Enemy died!");
+        Destroy(InamicFunctieDestroy, delayMoarte);
 
     }
 }

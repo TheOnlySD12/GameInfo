@@ -10,6 +10,9 @@ public class PlayerCombat : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
+    public float coolDown = 1;
+    public float coolDownTimer;
+
 
     public int attackDamage = 20;
 
@@ -17,13 +20,23 @@ public class PlayerCombat : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.X))
-        {
+       // if (Input.GetKeyDown(KeyCode.X))
+      //  {
 
-            Attack();
+           // Attack();
         
+       // }
+       
+        if (coolDownTimer > 0)
+        {
+            coolDownTimer -= Time.deltaTime;
         }
-        
+        if (Input.GetKeyDown(KeyCode.X) && coolDownTimer <= 0)
+        {
+            Attack();
+            coolDownTimer = coolDown;
+        }
+
     }
 
     void Attack()
