@@ -18,7 +18,6 @@ public class Movement : MonoBehaviour
 
 
 
-
     /*void Start()
     {
         respawnPoint = transform.position;
@@ -94,7 +93,7 @@ public class Movement : MonoBehaviour
             falltimer = 0.25;
         }
     }
-    
+
     void Flip()
     {
 
