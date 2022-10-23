@@ -51,7 +51,7 @@ public class PlayerCombat : MonoBehaviour
             if (dCoolDownTimer > 0)
             {
                 DoubleAttack();
-                coolDownTimer = 1.3f;
+                coolDownTimer = 1.5f;
                 dCoolDownTimer = 0;
 
             } else {
