@@ -47,19 +47,18 @@ public class PlayerCombat : MonoBehaviour
         // Determine if it can attack and the type of the attack
         //if (!animator.GetBool("IsJumping"))                     // can attack only if it's not jumping
         //{
-        if (Input.GetKeyDown(KeyCode.X) && dCoolDownTimer > 0)
-        {
- 
-            DoubleAttack();
-            coolDownTimer = 1.5f;
-            dCoolDownTimer = 0;
+        if (Input.GetKeyDown(KeyCode.X)) {
+            if (dCoolDownTimer > 0)
+            {
+                DoubleAttack();
+                coolDownTimer = 1.3f;
+                dCoolDownTimer = 0;
 
-        }
-        if (Input.GetKeyDown(KeyCode.X) && coolDownTimer <= 0)
-        {
-            Attack();
-            coolDownTimer = coolDown;
-            dCoolDownTimer = 0.33f;
+            } else {
+                Attack();
+                coolDownTimer = coolDown;
+                dCoolDownTimer = 0.33f;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.F) && hCoolDownTimer <= 0 )
