@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
     private Rigidbody2D body;
     [SerializeField] private float jumpspeed = 8.0f;
 
-    private bool isjumping;
+    private bool isJumping;
 
     bool facingRight;
 
@@ -18,15 +18,10 @@ public class Movement : MonoBehaviour
 
     public Animator animator;
 
-    /*void Start()
+    void Start()
     {
         respawnPoint = transform.position;
     }
-    */
-
-
-
-
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
@@ -43,11 +38,11 @@ public class Movement : MonoBehaviour
         body.velocity = new Vector2(Input.GetAxis("Horizontal") * runSpeed, body.velocity.y); //mers orizontal
 
         //animator.SetFloat("Speed",);
-        if (Input.GetButton("Jump") && (!isjumping || falltimer>0))  //sarit
+        if (Input.GetButton("Jump") && (!isJumping || falltimer>0))  //sarit
         {
             
             body.velocity = new Vector2(body.velocity.x, jumpspeed);    //sarit
-            isjumping = true;
+            isJumping = true;
             falltimer -= Time.deltaTime;
             animator.SetBool("IsJumping",true);
         }
@@ -55,9 +50,7 @@ public class Movement : MonoBehaviour
         {
             falltimer = 0;
             animator.SetBool("IsJumping",false);
-           
         }
-        
         if (Input.GetAxisRaw("Horizontal") < 0 && !facingRight)
         {         // se intoarce stanaga/ dreapta
             Flip();
@@ -94,7 +87,7 @@ public class Movement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {     //check daca e pe pamant
-            isjumping = false;
+            isJumping = false;
             falltimer = 0.25;
         }
     }

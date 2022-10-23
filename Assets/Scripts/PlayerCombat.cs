@@ -30,38 +30,35 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-       // if (Input.GetKeyDown(KeyCode.X))
-      //  {
-
-           // Attack();
-        
-       // }
        
+        // Set collDown timers
         if (coolDownTimer > 0)
         {
             coolDownTimer -= Time.deltaTime;
         }
+        if (hCoolDownTimer > 0)
+        {
+            hCoolDownTimer -= Time.deltaTime;
+        }
+        if (dCoolDownTimer > 0)
+        {
+            dCoolDownTimer -= Time.deltaTime;
+        }
+
+        // Determine if it can attack and the type of the attack
+        //if (!animator.GetBool("IsJumping"))                     // can attack only if it's not jumping
+        //{
         if (Input.GetKeyDown(KeyCode.X) && coolDownTimer <= 0)
         {
+
             Attack();
             coolDownTimer = coolDown;
         }
 
-        if(hCoolDownTimer>0)
-        {
-            hCoolDownTimer -= Time.deltaTime;
-        }
         if (Input.GetKeyDown(KeyCode.F) && hCoolDownTimer <= 0)
         {
             HeavyAttack();
-             
             hCoolDownTimer = hCoolDown;
-        }
-
-        if (dCoolDownTimer > 0)
-        {
-            dCoolDownTimer -= Time.deltaTime;
         }
         if (Input.GetKeyDown(KeyCode.G) && dCoolDownTimer <= 0)
         {
@@ -69,6 +66,7 @@ public class PlayerCombat : MonoBehaviour
 
             dCoolDownTimer = dCoolDown;
         }
+        //}
     }
 
     void Attack()
