@@ -18,14 +18,12 @@ public class PlayerCombat : MonoBehaviour
     public float hCoolDown = 3;
     public float hCoolDownTimer;
 
-    public float dCoolDown = 2;
-    public float dCoolDownTimer;
+    public float dCoolDownTimer = 0.33f;
 
-    public int attackDamage = 10;
+    public int attackDamage = 5;
 
-    public int heavyAttackDamage = 30;
+    public int heavyAttackDamage = 15;
 
-    public int doubleAttackDamage = 20;
 
     // Update is called once per frame
     void Update()
@@ -40,31 +38,34 @@ public class PlayerCombat : MonoBehaviour
         {
             hCoolDownTimer -= Time.deltaTime;
         }
-        if (dCoolDownTimer > 0)
+        if (dCoolDownTimer >0)
         {
             dCoolDownTimer -= Time.deltaTime;
         }
 
+
         // Determine if it can attack and the type of the attack
         //if (!animator.GetBool("IsJumping"))                     // can attack only if it's not jumping
         //{
+        if (Input.GetKeyDown(KeyCode.X) && dCoolDownTimer > 0)
+        {
+ 
+            DoubleAttack();
+            coolDownTimer = 1.5f;
+            dCoolDownTimer = 0;
+
+        }
         if (Input.GetKeyDown(KeyCode.X) && coolDownTimer <= 0)
         {
-
             Attack();
             coolDownTimer = coolDown;
+            dCoolDownTimer = 0.33f;
         }
 
-        if (Input.GetKeyDown(KeyCode.F) && hCoolDownTimer <= 0)
+        if (Input.GetKeyDown(KeyCode.F) && hCoolDownTimer <= 0 )
         {
             HeavyAttack();
             hCoolDownTimer = hCoolDown;
-        }
-        if (Input.GetKeyDown(KeyCode.G) && dCoolDownTimer <= 0)
-        {
-            DoubleAttack();
-
-            dCoolDownTimer = dCoolDown;
         }
         //}
     }
@@ -105,7 +106,7 @@ public class PlayerCombat : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
 
-            enemy.GetComponent<Enemy>().TakeDamage(doubleAttackDamage);
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
 
         }
 
