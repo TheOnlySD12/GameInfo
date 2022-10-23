@@ -36,8 +36,7 @@ public class Movement : MonoBehaviour
     {
 
         body.velocity = new Vector2(Input.GetAxis("Horizontal") * runSpeed, body.velocity.y); //mers orizontal
-
-        //animator.SetFloat("Speed",);
+        animator.SetFloat("Speed",Mathf.Abs(body.velocity.x));
         if (Input.GetButton("Jump") && (!isJumping || falltimer>0))  //sarit
         {
             
