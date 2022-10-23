@@ -11,4 +11,9 @@ public class SavesMenu : MonoBehaviour
     public void QuitGame () {
         Application.Quit();
     }
+
+    public void Back2Menu()
+    {
+        SceneManager.LoadScene("SavesMenu");
+    }
 }
