@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float runSpeed = 15.0f;
     private Rigidbody2D body;
     [SerializeField] private float jumpspeed = 8.0f;
+    [SerializeField] private LayerMask jumpableGround;
 
     private bool isJumping;
 
@@ -17,6 +18,7 @@ public class Movement : MonoBehaviour
     private double falltimer = 0.5;
 
     public Animator animator;
+
 
     void Start()
     {
@@ -36,19 +38,17 @@ public class Movement : MonoBehaviour
     {
 
         body.velocity = new Vector2(Input.GetAxis("Horizontal") * runSpeed, body.velocity.y); //mers orizontal
-        animator.SetFloat("Speed",Mathf.Abs(body.velocity.x));
-        if (Input.GetButton("Jump") && (!isJumping || falltimer>0))  //sarit
+        animator.SetFloat("Speed", Mathf.Abs(body.velocity.x));
+        if (Input.GetButton("Jump") && (!isJumping || falltimer > 0))  //sarit
         {
-            
-            body.velocity = new Vector2(body.velocity.x, jumpspeed);    //sarit
+
+            body.velocity = new Vector2(body.velocity.x, jumpspeed);        //sarit
             isJumping = true;
             falltimer -= Time.deltaTime;
-            animator.SetBool("IsJumping",true);
         }
         if (Input.GetButtonUp("Jump"))
         {
             falltimer = 0;
-            animator.SetBool("IsJumping",false);
         }
         if (Input.GetAxisRaw("Horizontal") < 0 && !facingRight)
         {         // se intoarce stanaga/ dreapta
@@ -62,9 +62,9 @@ public class Movement : MonoBehaviour
 
         fallDetector.transform.position = new Vector2(transform.position.x, transform.position.y);
 
-        
 
-     
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -75,9 +75,9 @@ public class Movement : MonoBehaviour
 
         }
         //if (collision.tag == "NextLevelPlace")
-      //  {
-           // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-       // }
+        //  {
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        // }
     }
 
 
@@ -99,6 +99,4 @@ public class Movement : MonoBehaviour
         gameObject.transform.localScale = currentScale;
         facingRight = !facingRight;    //flip stanga dreapta
     }
-
-
 }
