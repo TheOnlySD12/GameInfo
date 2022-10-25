@@ -78,7 +78,7 @@ public class PlayerCombat : MonoBehaviour
         {
 
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
-
+            animator.SetTrigger("NewTrigger");
         }
 
     }
@@ -92,7 +92,7 @@ public class PlayerCombat : MonoBehaviour
         {
 
             enemy.GetComponent<Enemy>().TakeDamage(heavyAttackDamage);
-
+            animator.SetTrigger("NewTrigger");
         }
     
     }
@@ -106,6 +106,7 @@ public class PlayerCombat : MonoBehaviour
         {
 
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            animator.SetTrigger("NewTrigger");
 
         }
 
