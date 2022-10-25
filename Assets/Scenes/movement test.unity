@@ -3295,7 +3295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f5247ff793d484992a071e84d97231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   InamicFunctieDestroy: {fileID: 2037824541}
   delayMoarte: 0.15
 --- !u!1 &2059181023
