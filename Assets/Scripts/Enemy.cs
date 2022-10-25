@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     int currentHealth;
     public GameObject InamicFunctieDestroy;
     public float delayMoarte;
+    public Animator animator;
 
     void Start()
     {
@@ -18,7 +19,7 @@ public class Enemy : MonoBehaviour
     {
 
         currentHealth -= damage;
-
+        animator.SetTrigger("Hit");
         if (currentHealth <= 0)
         {
             Die();
