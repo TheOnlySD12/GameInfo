@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/PauseMenuRaul.unity
+    guid: d02c45f641ee31842805eae635e54a23
   m_configObjects: {}
