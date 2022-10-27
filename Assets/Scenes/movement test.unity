@@ -4209,7 +4209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 15
-  jumpspeed: 8
+  jumpspeed: 9
   jumpableGround:
     serializedVersion: 2
     m_Bits: 8
