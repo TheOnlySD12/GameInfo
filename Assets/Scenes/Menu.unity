@@ -1830,7 +1830,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 887644924}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1430736860}
+        m_TargetAssemblyTypeName: Settingsmenu, Assembly-CSharp
+        m_MethodName: LoadPauseMenuRaul
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &887644924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3275,6 +3287,7 @@ GameObject:
   - component: {fileID: 1430736856}
   - component: {fileID: 1430736855}
   - component: {fileID: 1430736859}
+  - component: {fileID: 1430736860}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3383,6 +3396,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: fe64160447a13b746a2eeefbe3c00d9f, type: 2}
   resolutionDropdown: {fileID: 2107829608}
+--- !u!114 &1430736860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430736854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3bc1031c95b9649ae099152ae0a395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 0}
+  resolutionDropdown: {fileID: 0}
 --- !u!1 &1520272651
 GameObject:
   m_ObjectHideFlags: 0

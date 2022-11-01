@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Settingsmenu : MonoBehaviour
 {
@@ -57,5 +58,10 @@ public class Settingsmenu : MonoBehaviour
     public void SetFullscreen (bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
+    }
+
+    public void LoadPauseMenuRaul()
+    {
+        SceneManager.LoadScene("PauseMenuRaul");
     }
 }
