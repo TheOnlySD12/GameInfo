@@ -250,9 +250,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: c0910000
-      m_LastClickedID: 37312
-      m_ExpandedIDs: 3eeaffff6ef3ffff06f7ffff649100009c910000bc9100001a920000
+      m_SelectedIDs: 66630000
+      m_LastClickedID: 25446
+      m_ExpandedIDs: 04fbffff32620000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -295,8 +295,8 @@ MonoBehaviour:
     y: 0
     width: 1167
     height: 637
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 9}
@@ -381,7 +381,7 @@ MonoBehaviour:
       containerId: overlay-toolbar__top
       floating: 0
       collapsed: 0
-      displayed: 1
+      displayed: 0
       snapOffset: {x: 0, y: 0}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
@@ -957,22 +957,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\Elev\Documents\GitHub\GameInfo
+  m_LastProjectPath: C:\Users\Elev\GameInfo
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 83}
-    m_SelectedIDs: 346f0000
-    m_LastClickedID: 28468
-    m_ExpandedIDs: 00000000506b000092720000667b0000a482000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: 02650000
+    m_LastClickedID: 25858
+    m_ExpandedIDs: 000000000265000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1000,7 +1000,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000506b0000
+    m_ExpandedIDs: 0000000002650000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1025,9 +1025,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: c0910000
-    m_LastClickedInstanceID: 37312
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 66630000
+    m_LastClickedInstanceID: 25446
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000000000003c62000046620000a2690000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
