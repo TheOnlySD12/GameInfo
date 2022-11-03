@@ -10,7 +10,7 @@ public class Settingsmenu : MonoBehaviour
     public AudioMixer audioMixer;
 
     public TMPro.TMP_Dropdown resolutionDropdown;
-
+    
     Resolution[] resolutions;
 
     void Start () 
