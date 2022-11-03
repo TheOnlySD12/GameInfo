@@ -36,17 +36,26 @@ public class Movement : MonoBehaviour
         Update(fallDetector);
 
         horizontal = Input.GetAxisRaw("Horizontal");
+        animator.SetFloat("Speed",Mathf.Abs(rb.velocity.x));
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            animator.SetBool("IsJumping",true);
         }
 
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            animator.SetBool("IsJumping", false);
+            animator.SetBool("IsFalling", true);
         }
+        if(IsGrounded())
+        {
 
+            animator.SetBool("IsFalling", false);
+
+        }
 
     }
 
