@@ -3,19 +3,21 @@ using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private float runSpeed = 15.0f;
-    private Rigidbody2D body;
-    [SerializeField] private float jumpspeed = 8.0f;
-    [SerializeField] private LayerMask jumpableGround;
 
-    private bool isJumping;
+
+
 
     bool facingRight;
 
     private Vector3 respawnPoint;
     public GameObject fallDetector;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
+    private float speed = 8f;
+    private float jumpingPower = 16f;
+    private float horizontal;
 
-    private double falltimer = 0.5;
 
     public Animator animator;
 
@@ -26,30 +28,32 @@ public class Movement : MonoBehaviour
     }
     private void Awake()
     {
-        body = GetComponent<Rigidbody2D>();
+    
     }
 
     private void Update()
     {
         Update(fallDetector);
+
+        horizontal = Input.GetAxisRaw("Horizontal");
+
+        if (Input.GetButtonDown("Jump") && IsGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+        }
+
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        }
+
+
     }
 
     private void Update(GameObject fallDetector)
     {
 
-        body.velocity = new Vector2(Input.GetAxis("Horizontal") * runSpeed, body.velocity.y); //mers orizontal
-        animator.SetFloat("Speed", Mathf.Abs(body.velocity.x));
-        if (Input.GetButton("Jump") && (!isJumping || falltimer > 0))  //sarit
-        {
-
-            body.velocity = new Vector2(body.velocity.x, jumpspeed);        //sarit
-            isJumping = true;
-            falltimer -= Time.deltaTime;
-        }
-        if (Input.GetButtonUp("Jump"))
-        {
-            falltimer = 0;
-        }
+      
         if (Input.GetAxisRaw("Horizontal") < 0 && !facingRight)
         {         // se intoarce stanaga/ dreapta
             Flip();
@@ -67,6 +71,16 @@ public class Movement : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+    }
+
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "FallDetector")
@@ -82,14 +96,7 @@ public class Movement : MonoBehaviour
 
 
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Ground"))
-        {     //check daca e pe pamant
-            isJumping = false;
-            falltimer = 0.25;
-        }
-    }
+
 
     void Flip()
     {

@@ -1173,7 +1173,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &850427835
+--- !u!1 &928544095
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1181,24 +1181,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 850427836}
+  - component: {fileID: 928544096}
   m_Layer: 0
-  m_Name: groundCheck
+  m_Name: Ground Check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &850427836
+--- !u!4 &928544096
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 850427835}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.059, y: -0.564, z: -1.2488635}
-  m_LocalScale: {x: 0.2654988, y: 0.2654988, z: 0.2654988}
+  m_GameObject: {fileID: 928544095}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.057, y: -0.631, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1684990525}
@@ -1383,7 +1383,7 @@ GameObject:
   - component: {fileID: 1144247981}
   - component: {fileID: 1144247980}
   - component: {fileID: 1144247979}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 'Tilemap_Base '
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -7418,10 +7418,10 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 4
   m_Material: {fileID: 6200000, guid: 2bcaf6db2e77bee4c99f7074e213cedc, type: 2}
   m_Interpolate: 1
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &1684990523
@@ -7515,7 +7515,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 590650196}
-  - {fileID: 850427836}
+  - {fileID: 928544096}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7576,12 +7576,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68937c18be39d5442917423b108c4f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 14
-  jumpspeed: 7
-  jumpableGround:
-    serializedVersion: 2
-    m_Bits: 8
   fallDetector: {fileID: 667619317}
+  rb: {fileID: 1684990522}
+  groundCheck: {fileID: 928544096}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
   animator: {fileID: 1684990526}
 --- !u!1 &1690268079
 GameObject:
