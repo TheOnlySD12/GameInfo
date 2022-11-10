@@ -60,8 +60,9 @@ public class Settingsmenu : MonoBehaviour
         Screen.fullScreen = isFullscreen;
     }
 
-    public void LoadPauseMenuRaul()
+    public void BackToGameButton()
     {
         SceneManager.LoadScene("PauseMenuRaul");
     }
+
 }
