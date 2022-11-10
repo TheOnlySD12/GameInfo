@@ -41,14 +41,15 @@ public class Movement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-            animator.SetBool("IsJumping",true);
         }
-
+        while (Input.GetButtonDown("Jump")&& !IsGrounded())
+        {
+            animator.SetBool("IsFullJumping", true);
+        }
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-            animator.SetBool("IsJumping", false);
-            animator.SetBool("IsFalling", true);
+
         }
         if(IsGrounded())
         {
