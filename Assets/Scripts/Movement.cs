@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     private float jumpingPower = 16f;
     private float horizontal;
 
+    public float FallingThreshold = -0.3f;
 
     public Animator animator;
 
@@ -28,6 +29,8 @@ public class Movement : MonoBehaviour
     }
     private void Awake()
     {
+
+
     
     }
 
@@ -41,20 +44,22 @@ public class Movement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            animator.SetBool("IsJumping",true);
         }
-        while (Input.GetButtonDown("Jump")&& !IsGrounded())
+        
+        if (rb.velocity.y < FallingThreshold)
         {
-            animator.SetBool("IsFullJumping", true);
+            animator.SetBool("IsJumping", false);
+            animator.SetBool("IsFalling",true);
         }
+        else
+        {
+            animator.SetBool("IsFalling",false);
+        }
+
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-
-        }
-        if(IsGrounded())
-        {
-
-            animator.SetBool("IsFalling", false);
 
         }
 

@@ -7,7 +7,7 @@ public class PlayerCombat : MonoBehaviour
 {
 
     public Animator animator;
-
+ 
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
@@ -23,6 +23,9 @@ public class PlayerCombat : MonoBehaviour
     public int attackDamage = 5;
 
     public int heavyAttackDamage = 15;
+
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
 
 
     // Update is called once per frame
@@ -45,28 +48,38 @@ public class PlayerCombat : MonoBehaviour
 
 
         // Determine if it can attack and the type of the attack
-        //if (!animator.GetBool("IsJumping"))                     // can attack only if it's not jumping
-        //{
-        if (Input.GetKeyDown(KeyCode.X)) {
-            if (dCoolDownTimer > 0)
+        if (IsGrounded())                     // can attack only if it's not jumping
+        {
+
+
+            if (Input.GetKeyDown(KeyCode.X)) 
             {
+            
+
+                if (dCoolDownTimer > 0)
+                
+                {
                 DoubleAttack();
                 coolDownTimer = 1.5f;
                 dCoolDownTimer = 0;
 
-            } else {
+            
+                } else {
                 Attack();
                 coolDownTimer = coolDown;
                 dCoolDownTimer = 0.33f;
+            
+                }
             }
-        }
 
-        if (Input.GetKeyDown(KeyCode.F) && hCoolDownTimer <= 0 )
-        {
+            if (Input.GetKeyDown(KeyCode.F) && hCoolDownTimer <= 0 )
+            {
             HeavyAttack();
             hCoolDownTimer = hCoolDown;
+
+
+            }
         }
-        //}
     }
 
     void Attack()
@@ -94,6 +107,7 @@ public class PlayerCombat : MonoBehaviour
             enemy.GetComponent<Enemy>().TakeDamage(heavyAttackDamage);
             
         }
+        
     
     }
 
@@ -110,6 +124,10 @@ public class PlayerCombat : MonoBehaviour
 
         }
 
+    }
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
     private void OnDrawGizmosSelected()
