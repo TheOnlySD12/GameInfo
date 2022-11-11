@@ -1,3 +1,5 @@
+using System.Collections;
+using TMPro.Examples;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,6 +22,14 @@ public class Movement : MonoBehaviour
 
     public float FallingThreshold = -0.3f;
 
+    //Dash variabile
+    private bool canDash = true;
+    private bool isDashing;
+    private float dashingPower = 9.8f;
+    private float dashingTime = 0.2f;
+    private float dashingCooldown = 0.3f;
+
+
     public Animator animator;
 
 
@@ -31,30 +41,35 @@ public class Movement : MonoBehaviour
     {
 
 
-    
+
     }
 
     private void Update()
     {
+        if (isDashing)
+        {
+            return;
+        }
         Update(fallDetector);
 
+
         horizontal = Input.GetAxisRaw("Horizontal");
-        animator.SetFloat("Speed",Mathf.Abs(rb.velocity.x));
+        animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-            animator.SetBool("IsJumping",true);
+            animator.SetBool("IsJumping", true);
         }
-        
+
         if (rb.velocity.y < FallingThreshold)
         {
             animator.SetBool("IsJumping", false);
-            animator.SetBool("IsFalling",true);
+            animator.SetBool("IsFalling", true);
         }
         else
         {
-            animator.SetBool("IsFalling",false);
+            animator.SetBool("IsFalling", false);
         }
 
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
@@ -62,8 +77,14 @@ public class Movement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
 
         }
+        if (Input.GetKeyDown(KeyCode.C) && canDash)
+        {
+            StartCoroutine(Dash());
+        }
+
 
     }
+
 
     private void Update(GameObject fallDetector)
     {
@@ -85,9 +106,28 @@ public class Movement : MonoBehaviour
 
 
     }
+    private IEnumerator Dash()
+    {
+        animator.SetTrigger("Dash");
+        canDash = false;
+        isDashing = true;
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+        rb.velocity = new Vector2(transform.localScale.x * dashingPower,0f);
+        yield return new WaitForSeconds(dashingTime);
+        rb.gravityScale = originalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
+
+    }
 
     private void FixedUpdate()
     {
+        if (isDashing)
+        {
+            return;
+        }
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
 

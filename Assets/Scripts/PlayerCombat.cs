@@ -28,6 +28,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
 
+
     // Update is called once per frame
     void Update()
     {
@@ -74,8 +75,9 @@ public class PlayerCombat : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.F) && hCoolDownTimer <= 0 )
             {
-            HeavyAttack();
-            hCoolDownTimer = hCoolDown;
+            
+                HeavyAttack();
+                hCoolDownTimer = hCoolDown;
 
 
             }
