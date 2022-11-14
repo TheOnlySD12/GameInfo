@@ -80,6 +80,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C) && canDash)
         {
             StartCoroutine(Dash());
+            animator.SetTrigger("Dash");
         }
 
 
@@ -108,7 +109,7 @@ public class Movement : MonoBehaviour
     }
     private IEnumerator Dash()
     {
-        animator.SetTrigger("Dash");
+        animator.SetBool("IsJumping", false);
         canDash = false;
         isDashing = true;
         float originalGravity = rb.gravityScale;
