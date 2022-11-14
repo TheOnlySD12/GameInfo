@@ -27,13 +27,26 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    public void SavePlayer(){
+        SaveSystem.SavePlayer(this);
+    }
+
+    public void LoadPlayer()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+        Vector3 position;
+        position.x = data.position[0];
+        position.y = data.position[1];
+        position.z = data.position[2];
+        transform.position = position;
+    }
 
 
     // Update is called once per frame
     void Update()
     {
        
-        // Set collDown timers
+        // Set coolDown timers
         if (coolDownTimer > 0)
         {
             coolDownTimer -= Time.deltaTime;
