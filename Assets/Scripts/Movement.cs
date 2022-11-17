@@ -29,6 +29,8 @@ public class Movement : MonoBehaviour
     private float dashingTime = 0.2f;
     private float dashingCooldown = 0.3f;
 
+    //Crouch variable
+
 
     public Animator animator;
 
@@ -82,6 +84,17 @@ public class Movement : MonoBehaviour
             StartCoroutine(Dash());
             animator.SetTrigger("Dash");
         }
+        if (Input.GetKeyDown(KeyCode.LeftShift) && IsGrounded())
+        {
+            speed = 4f;
+            animator.SetBool("IsCrouching",true);
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speed = 8f;
+            animator.SetBool("IsCrouching", false);
+        }
+
 
 
     }
@@ -123,7 +136,7 @@ public class Movement : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+        private void FixedUpdate()
     {
         if (isDashing)
         {
