@@ -136,6 +136,7 @@ public class PlayerCombat : MonoBehaviour
 
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
             
+            
 
         }
 

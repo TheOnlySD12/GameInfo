@@ -14,6 +14,8 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Debug.Log("pauza");
+            
             if (GameIsPaused)
             {
                 Resume();
@@ -22,6 +24,10 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
+    }
+    public void Back2Menu()
+    {
+        SceneManager.LoadScene("SavesMenu");
     }
 
     public void Resume ()
