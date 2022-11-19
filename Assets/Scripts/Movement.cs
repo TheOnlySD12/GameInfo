@@ -30,7 +30,8 @@ public class Movement : MonoBehaviour
     private float dashingCooldown = 0.3f;
 
     //Crouch variable
-
+    public BoxCollider2D cCollider2D;
+    public BoxCollider2D fBoxCollider2D;
 
     public Animator animator;
 
@@ -38,6 +39,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         respawnPoint = transform.position;
+        cCollider2D.enabled = false;
     }
     private void Awake()
     {
@@ -88,11 +90,17 @@ public class Movement : MonoBehaviour
         {
             speed = 4f;
             animator.SetBool("IsCrouching",true);
+            cCollider2D.enabled = true;
+            fBoxCollider2D.enabled = false;
+      
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = 8f;
             animator.SetBool("IsCrouching", false);
+            fBoxCollider2D.enabled = true;
+            cCollider2D.enabled = false;    
+            
         }
 
 
