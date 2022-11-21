@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class SavesMenu : MonoBehaviour {
+public class SMSettings : MonoBehaviour {
 
     public AudioMixer audioMixer;
     public TMPro.TMP_Dropdown resolutionDropdown;
@@ -40,18 +40,6 @@ public class SavesMenu : MonoBehaviour {
 
     public void SetFullscreen(bool isFullscreen) {
         Screen.fullScreen = isFullscreen;
-    }
-
-    public void PlayGame () {
-        SceneManager.LoadScene("Map");
-    }
-
-    public void QuitGame () {
-        Application.Quit();
-    }
-
-    public void Back2Menu() {
-        SceneManager.LoadScene("SavesMenu");
     }
 
     public void SetVolume(float volume) {

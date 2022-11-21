@@ -1847,7 +1847,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1831038552}
-        m_TargetAssemblyTypeName: SavesMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: SMOther, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -3018,7 +3018,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1831038552}
-        m_TargetAssemblyTypeName: SavesMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: SMOther, Assembly-CSharp
         m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
@@ -5350,11 +5350,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1831038547}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ce32be11571bbe489797f9044aba521, type: 3}
+  m_Script: {fileID: 11500000, guid: 36fabef3793a53448a0b03df7436dae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: fe64160447a13b746a2eeefbe3c00d9f, type: 2}
-  resolutionDropdown: {fileID: 122412715}
 --- !u!1 &1875636740
 GameObject:
   m_ObjectHideFlags: 0
