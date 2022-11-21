@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
 
     bool facingRight;
 
-    private Vector3 respawnPoint;
+    public Transform respawnPoint;
     public GameObject fallDetector;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -38,7 +38,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
-        respawnPoint = transform.position;
+        
         cCollider2D.enabled = false;
     }
     private void Awake()
@@ -107,7 +107,6 @@ public class Movement : MonoBehaviour
 
     }
 
-
     private void Update(GameObject fallDetector)
     {
 
@@ -162,7 +161,7 @@ public class Movement : MonoBehaviour
     {
         if (collision.tag == "FallDetector")
         {
-            transform.position = respawnPoint;
+            transform.position = respawnPoint.position;
 
         }
         //if (collision.tag == "NextLevelPlace")
