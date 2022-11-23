@@ -2,6 +2,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
+//Cod direct de la Brackeys nu are errori nu schimbati cred ca o sa corupa din cauza fisierului
 public class SaveSystem{
      
     public static void SavePlayer(PlayerCombat player){

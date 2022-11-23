@@ -5,12 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData  {
 
-    //public int health;
+    //Am sa adaug si health si enemy health cand pot eu Armand; nu umblati ma ocup
     public float[] position;
 
     public PlayerData (PlayerCombat player) {
 
-        //health = player.health;
         position = new float[3];
         position[0] = player.transform.position.x;
         position[1] = player.transform.position.y;
