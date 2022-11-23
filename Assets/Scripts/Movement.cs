@@ -15,6 +15,7 @@ public class Movement : MonoBehaviour
     public GameObject fallDetector;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
+    [SerializeField] private Transform groundCheck2;
     [SerializeField] private LayerMask groundLayer;
     private float speed = 8f;
     private float jumpingPower = 16f;
@@ -59,6 +60,12 @@ public class Movement : MonoBehaviour
 
         horizontal = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
+
+        if (Input.GetButtonDown("Jump") && IsGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            animator.SetBool("IsJumping", true);
+        }
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
@@ -155,6 +162,12 @@ public class Movement : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+
+    }
+    private bool IsGrounded2()
+    {
+        return Physics2D.OverlapCircle(groundCheck2.position, 0.2f, groundLayer);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
