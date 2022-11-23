@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemyFlying : MonoBehaviour
 {
@@ -12,28 +13,38 @@ public class EnemyFlying : MonoBehaviour
 
     public float movespeed = 0.33f;
     
-    private float speed;
-    private float distance;
-    private float time = 0.33f;
+    
+    
+    
     private float moveTimer;
-    void Move(float diffx, float diffy, float time)
+    public void Move(float diffx, float diffy, float time)
     {
         
         
-        distance = Mathf.Sqrt(diffx * diffx + diffy * diffy);
+        float distance = Mathf.Sqrt(diffx * diffx + diffy * diffy);
         
         moveTimer = time;
         if (moveTimer > 0)
         {
-            body.velocity = new Vector2(body.transform.position.x + diffx, body.transform.position.y + diffy) * (distance / time);
+            body.velocity = new Vector2(diffx, diffy) * (distance / time);
             moveTimer -= Time.deltaTime;
         }
-
+        else
+        {
+            body.velocity = Vector2.zero;
+        }
     }
-
+    private float repeatDelay;
     private void Update()
     {
-        randomposition = new Vector2(Random.value * 2, Random.value * 2);
-        Move(randomposition.x, randomposition.y, movespeed);
+        if (repeatDelay < 0)
+        {
+            randomposition = new Vector2((Random.value - 0.5f) * 2, (Random.value - 0.5f) * 2);
+            Move(randomposition.x, randomposition.y, movespeed);
+            repeatDelay = 2;
+            Debug.Log("moved: " + randomposition.x + " " + randomposition.y);
+        }
+        repeatDelay -= Time.deltaTime;
+        
     }
 }
