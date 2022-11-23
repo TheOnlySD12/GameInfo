@@ -22,11 +22,11 @@ public class PlayerHealth : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            TakeDamage(15);
+            Takedamage(20);
         }
     }
 
-    void TakeDamage(int damage)
+    void Takedamage(int damage)
     {
         currentHealth -= damage;
 
