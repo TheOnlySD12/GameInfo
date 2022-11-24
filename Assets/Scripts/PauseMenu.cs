@@ -11,7 +11,6 @@ public class PauseMenu : MonoBehaviour {
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)){
-            Debug.Log("pauza");
             if (GameIsPaused){
                 Resume();
             } else {
@@ -21,6 +20,7 @@ public class PauseMenu : MonoBehaviour {
     }
 
     public void Back2Menu(){
+        Time.timeScale = 1f;
         GameIsPaused = false;
         SceneManager.LoadScene("SavesMenu");
     }
@@ -38,6 +38,8 @@ public class PauseMenu : MonoBehaviour {
     }
 
     public void QuitGame(){
-        Application.Quit();
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        SceneManager.LoadScene("Map");
     }
 }
