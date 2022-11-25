@@ -9184,8 +9184,9 @@ GameObject:
   - component: {fileID: 2107437390}
   - component: {fileID: 2107437389}
   - component: {fileID: 2107437388}
-  m_Layer: 0
-  m_Name: AngelicChadProtector
+  - component: {fileID: 2107437393}
+  m_Layer: 6
+  m_Name: AngelicAngleProtector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9204,18 +9205,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0008312389, y: -0.122410476}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.6, y: 10.42}
+    oldSize: {x: 1.22, y: 1.17}
     newSize: {x: 8.6, y: 10.42}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.6, y: 10.42}
+  m_Size: {x: 0.204399, y: 0.522156}
   m_EdgeRadius: 0
 --- !u!50 &2107437389
 Rigidbody2D:
@@ -9293,7 +9294,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 00190413d6d4f3b4da71ef6be7ce6651, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fce97958da54a4c40a77191a048fa121, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -9312,13 +9313,33 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107437387}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.63, y: 1.93, z: 0}
-  m_LocalScale: {x: 0.3841, y: 0.3841, z: 0.3841}
+  m_LocalPosition: {x: -14.77, y: 2.73, z: 0}
+  m_LocalScale: {x: 6.7196894, y: 6.7196894, z: 6.7196894}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2107437393
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107437387}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4f8be0c5324d5bc4692e9c398b6e02d7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2116840381
 GameObject:
   m_ObjectHideFlags: 0
