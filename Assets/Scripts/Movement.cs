@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
     public Transform respawnPoint;
     public GameObject fallDetector;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private BoxCollider2D BoxCollider2D;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform groundCheck2;
     [SerializeField] private LayerMask groundLayer;
@@ -30,9 +31,6 @@ public class Movement : MonoBehaviour
     private float dashingTime = 0.2f;
     private float dashingCooldown = 0.3f;
 
-    //Crouch variable
-    public BoxCollider2D cCollider2D;
-    public BoxCollider2D fBoxCollider2D;
 
     public Animator animator;
 
@@ -40,7 +38,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         
-        cCollider2D.enabled = false;
+
     }
     private void Awake()
     {
@@ -97,17 +95,16 @@ public class Movement : MonoBehaviour
         {
             speed = 4f;
             animator.SetBool("IsCrouching",true);
-            cCollider2D.enabled = true;
-            fBoxCollider2D.enabled = false;
-      
+            BoxCollider2D.size = new Vector2(0.5124145f, 0.6913913f);
+            BoxCollider2D.offset = new Vector2(-0.0112071f, -0.2856956f);
+
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = 8f;
             animator.SetBool("IsCrouching", false);
-            fBoxCollider2D.enabled = true;
-            cCollider2D.enabled = false;    
-            
+            BoxCollider2D.size = new Vector2(0.3790072f, 0.9818009f);
+            BoxCollider2D.offset = new Vector2(-0.01607659f, -0.1423518f);
         }
 
 

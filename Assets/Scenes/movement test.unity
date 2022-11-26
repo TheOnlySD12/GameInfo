@@ -8280,7 +8280,6 @@ GameObject:
   - component: {fileID: 1684990526}
   - component: {fileID: 1684990527}
   - component: {fileID: 1684990528}
-  - component: {fileID: 1684990529}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -8395,7 +8394,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684990520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -36.02, y: 2.32, z: 0}
+  m_LocalPosition: {x: -47.42, y: 10.09, z: 0}
   m_LocalScale: {x: 2.7977507, y: 2.7977507, z: 2.7977507}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8469,41 +8468,14 @@ MonoBehaviour:
   respawnPoint: {fileID: 1699178312}
   fallDetector: {fileID: 667619317}
   rb: {fileID: 1684990522}
+  BoxCollider2D: {fileID: 1684990523}
   groundCheck: {fileID: 928544096}
   groundCheck2: {fileID: 1516328557}
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
   FallingThreshold: -0.3
-  cCollider2D: {fileID: 1684990529}
-  fBoxCollider2D: {fileID: 1684990523}
   animator: {fileID: 1684990526}
---- !u!61 &1684990529
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1684990520}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.011207104, y: -0.28569564}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.59375, y: 1.375}
-    newSize: {x: 1, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.51241446, y: 0.6913913}
-  m_EdgeRadius: 0
 --- !u!1 &1690268079
 GameObject:
   m_ObjectHideFlags: 0
@@ -8733,7 +8705,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821920593}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -36.02, y: 2.32, z: -10}
+  m_LocalPosition: {x: -47.42, y: 10.09, z: -10}
   m_LocalScale: {x: 1.475, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9185,6 +9157,7 @@ GameObject:
   - component: {fileID: 2107437389}
   - component: {fileID: 2107437388}
   - component: {fileID: 2107437393}
+  - component: {fileID: 2107437394}
   m_Layer: 6
   m_Name: AngelicAngleProtector
   m_TagString: Untagged
@@ -9210,7 +9183,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.22, y: 1.17}
-    newSize: {x: 8.6, y: 10.42}
+    newSize: {x: 1.22, y: 1.17}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -9299,7 +9272,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 8.6, y: 10.42}
+  m_Size: {x: 1.22, y: 1.17}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -9340,6 +9313,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2107437394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107437387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f5247ff793d484992a071e84d97231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 200
+  InamicFunctieDestroy: {fileID: 2107437387}
+  delayMoarte: 0
+  animator: {fileID: 2107437393}
 --- !u!1 &2116840381
 GameObject:
   m_ObjectHideFlags: 0
@@ -9418,7 +9407,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116840381}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -36.02, y: 2.32, z: -10}
+  m_LocalPosition: {x: -47.42, y: 10.09, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
