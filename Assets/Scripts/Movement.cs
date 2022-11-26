@@ -24,6 +24,12 @@ public class Movement : MonoBehaviour
 
     public float FallingThreshold = -0.3f;
 
+    //Jump fancy variabile
+    private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
+
+    private float jumpBufferTime = 0.2f;
+    private float jumpBufferCounter;
     //Dash variabile
     private bool canDash = true;
     private bool isDashing;
@@ -55,21 +61,24 @@ public class Movement : MonoBehaviour
         }
         Update(fallDetector);
 
+        if (IsGrounded())
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
 
         horizontal = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
 
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Jump") && coyoteTimeCounter > 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             animator.SetBool("IsJumping", true);
         }
 
-        if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-            animator.SetBool("IsJumping", true);
-        }
 
         if (rb.velocity.y < FallingThreshold)
         {
@@ -84,7 +93,7 @@ public class Movement : MonoBehaviour
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-
+            coyoteTimeCounter = 0;
         }
         if (Input.GetKeyDown(KeyCode.C) && canDash)
         {
