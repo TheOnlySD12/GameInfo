@@ -73,10 +73,20 @@ public class Movement : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
 
-        if (Input.GetButtonDown("Jump") && coyoteTimeCounter > 0)
+        if (Input.GetButtonDown("Jump"))
+        {
+            jumpBufferCounter = jumpBufferTime;
+        }
+        else
+        {
+            jumpBufferCounter -= Time.deltaTime;
+        }
+
+        if (jumpBufferCounter > 0f && coyoteTimeCounter > 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             animator.SetBool("IsJumping", true);
+            jumpBufferCounter = 0f;
         }
 
 
