@@ -2031,9 +2031,9 @@ TextureImporter:
       name: Warrior_SheetnoEffect_91
       rect:
         serializedVersion: 2
-        x: 69
+        x: 90
         y: 44
-        width: 69
+        width: 21
         height: 44
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2052,9 +2052,9 @@ TextureImporter:
       name: Warrior_SheetnoEffect_92
       rect:
         serializedVersion: 2
-        x: 138
+        x: 160
         y: 44
-        width: 69
+        width: 20
         height: 44
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2073,9 +2073,9 @@ TextureImporter:
       name: Warrior_SheetnoEffect_93
       rect:
         serializedVersion: 2
-        x: 207
+        x: 228
         y: 44
-        width: 69
+        width: 20
         height: 44
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2094,9 +2094,9 @@ TextureImporter:
       name: Warrior_SheetnoEffect_94
       rect:
         serializedVersion: 2
-        x: 276
+        x: 298
         y: 44
-        width: 69
+        width: 20
         height: 44
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2115,9 +2115,9 @@ TextureImporter:
       name: Warrior_SheetnoEffect_95
       rect:
         serializedVersion: 2
-        x: 345
+        x: 367
         y: 44
-        width: 69
+        width: 19
         height: 44
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2136,9 +2136,9 @@ TextureImporter:
       name: Warrior_SheetnoEffect_96
       rect:
         serializedVersion: 2
-        x: 0
+        x: 21
         y: 0
-        width: 69
+        width: 19
         height: 44
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2157,9 +2157,9 @@ TextureImporter:
       name: Warrior_SheetnoEffect_97
       rect:
         serializedVersion: 2
-        x: 69
+        x: 89
         y: 0
-        width: 69
+        width: 21
         height: 44
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2178,9 +2178,9 @@ TextureImporter:
       name: Warrior_SheetnoEffect_98
       rect:
         serializedVersion: 2
-        x: 138
+        x: 158
         y: 0
-        width: 69
+        width: 21
         height: 44
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
