@@ -37,6 +37,7 @@ public class Movement : MonoBehaviour
     private float dashingTime = 0.2f;
     private float dashingCooldown = 0.3f;
 
+    [SerializeField] private Transform ceelingCheck;
 
     public Animator animator;
 
@@ -118,13 +119,14 @@ public class Movement : MonoBehaviour
             BoxCollider2D.offset = new Vector2(-0.0112071f, -0.2856956f);
 
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (Input.GetKeyUp(KeyCode.LeftShift) && !UnderCeeling())
         {
             speed = 8f;
             animator.SetBool("IsCrouching", false);
             BoxCollider2D.size = new Vector2(0.3790072f, 0.9818009f);
             BoxCollider2D.offset = new Vector2(-0.01607659f, -0.1423518f);
         }
+
 
 
 
@@ -155,11 +157,10 @@ public class Movement : MonoBehaviour
         animator.SetBool("IsJumping", false);
         canDash = false;
         isDashing = true;
-        float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(transform.localScale.x * dashingPower,0f);
         yield return new WaitForSeconds(dashingTime);
-        rb.gravityScale = originalGravity;
+        rb.gravityScale = 4f;
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
@@ -184,6 +185,10 @@ public class Movement : MonoBehaviour
     {
         return Physics2D.OverlapCircle(groundCheck2.position, 0.2f, groundLayer);
 
+    }
+    private bool UnderCeeling()
+    {
+        return Physics2D.OverlapCircle(ceelingCheck.position, 0.2f, groundLayer);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

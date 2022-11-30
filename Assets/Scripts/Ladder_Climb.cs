@@ -15,15 +15,18 @@ public class Ladder_Climb : MonoBehaviour
 
     public Animator animator;
 
+
     // Update is called once per frame
     void Update()
     {
         vertical = Input.GetAxis("Vertical");
 
-        if (isLadder && Mathf.Abs(vertical) > 0)
+        if (isLadder && Mathf.Abs(vertical) > 0.01)
         {
+            animator.SetBool("IsJumping", false);
             isClimbing = true;
-            animator.SetBool("IsClimbing",true);
+            animator.SetBool("IsClimbing", true);
+
         }
     }
 
@@ -33,7 +36,6 @@ public class Ladder_Climb : MonoBehaviour
         {
             rb.gravityScale = 0f;
             rb.velocity = new Vector2(rb.velocity.x, vertical * speed);
-            animator.SetFloat("VerticalSpeed", Mathf.Abs(rb.velocity.y));
         }
         else
         {
@@ -45,8 +47,8 @@ public class Ladder_Climb : MonoBehaviour
     {
         if (collision.CompareTag("Ladder"))
         {
-            isLadder = true;    
-
+            isLadder = true;
+            
         }
         
     }
