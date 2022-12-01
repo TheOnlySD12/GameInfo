@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour
     private float jumpBufferCounter;
     //Dash variabile
     private bool canDash = true;
-    private bool isDashing;
+    public static bool isDashing;
     private float dashingPower = 9.8f;
     private float dashingTime = 0.2f;
     private float dashingCooldown = 0.3f;
@@ -60,7 +60,7 @@ public class Movement : MonoBehaviour
         {
             return;
         }
-        Update(fallDetector);
+        
 
         if (IsGrounded())
         {
@@ -119,7 +119,7 @@ public class Movement : MonoBehaviour
             BoxCollider2D.offset = new Vector2(-0.0112071f, -0.2856956f);
 
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift) && !UnderCeeling())
+        if (!UnderCeeling() && !Input.GetKey(KeyCode.LeftShift))
         {
             speed = 8f;
             animator.SetBool("IsCrouching", false);
@@ -127,15 +127,6 @@ public class Movement : MonoBehaviour
             BoxCollider2D.offset = new Vector2(-0.01607659f, -0.1423518f);
         }
 
-
-
-
-    }
-
-    private void Update(GameObject fallDetector)
-    {
-
-      
         if (Input.GetAxisRaw("Horizontal") < 0 && !facingRight)
         {         // se intoarce stanaga/ dreapta
             Flip();
@@ -146,12 +137,9 @@ public class Movement : MonoBehaviour
             Flip();
         }
 
-        fallDetector.transform.position = new Vector2(transform.position.x, transform.position.y);
-
-
-
 
     }
+
     private IEnumerator Dash()
     {
         animator.SetBool("IsJumping", false);
@@ -193,8 +181,10 @@ public class Movement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "FallDetector")
+        
+        if (collision.CompareTag("FallDetector"))
         {
+            Debug.Log("Collision!!");
             transform.position = respawnPoint.position;
 
         }

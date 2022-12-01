@@ -11,7 +11,10 @@ public class Ladder_Climb : MonoBehaviour
     private bool isClimbing;
     private bool isLadder;
 
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Transform groundCheck;
     [SerializeField] private Rigidbody2D rb;
+
 
     public Animator animator;
 
@@ -22,12 +25,12 @@ public class Ladder_Climb : MonoBehaviour
         vertical = Input.GetAxis("Vertical");
 
         if (isLadder && Mathf.Abs(vertical) > 0.01)
-        {
-            animator.SetBool("IsJumping", false);
+        { 
             isClimbing = true;
-            animator.SetBool("IsClimbing", true);
+            
 
         }
+
     }
 
     private void FixedUpdate()
@@ -36,8 +39,13 @@ public class Ladder_Climb : MonoBehaviour
         {
             rb.gravityScale = 0f;
             rb.velocity = new Vector2(rb.velocity.x, vertical * speed);
+            animator.SetFloat("ClimbSpeed", Mathf.Abs(rb.velocity.y));
         }
-        else
+        if (isClimbing && rb.velocity.y == 0)
+        {
+            animator.SetFloat("ClimbSpeed", 0.01f);
+        }
+        if (!isClimbing && !Movement.isDashing)
         {
             rb.gravityScale = 4f;
         }
@@ -55,14 +63,17 @@ public class Ladder_Climb : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ladder"))
+        if (collision.CompareTag("Ladder") || IsGrounded())
         {
             isLadder = false;
             isClimbing = false;
-            animator.SetBool("IsClimbing", false);
-
+            animator.SetFloat("ClimbSpeed", 0);
         }
         
     }
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
+    }
 }
