@@ -42,7 +42,7 @@ public class EnemyFlying : MonoBehaviour
             randomposition = new Vector2((Random.value - 0.5f) * 2, (Random.value - 0.5f) * 2);
             Move(randomposition.x, randomposition.y, movespeed);
             repeatDelay = 2;
-            Debug.Log("moved: " + randomposition.x + " " + randomposition.y);
+            Debug.Log("Angel moved: " + randomposition.x + " " + randomposition.y);
         }
         repeatDelay -= Time.deltaTime;
         
