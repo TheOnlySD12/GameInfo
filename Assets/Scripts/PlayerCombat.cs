@@ -13,12 +13,12 @@ public class PlayerCombat : MonoBehaviour
     public LayerMask enemyLayers;
 
     public float coolDown = 1;
-    public float coolDownTimer;
-
+    
     public float hCoolDown = 1;
-    public float hCoolDownTimer;
+    public float dCoolDown = 0.33f; 
+    private float attackCooldown;
 
-    public float dCoolDownTimer = 0.33f;
+    public float dTimeLimiter = 0.33f;
 
     public int attackDamage = 5;
 
@@ -47,17 +47,14 @@ public class PlayerCombat : MonoBehaviour
     {
        
         // Set coolDown timers
-        if (coolDownTimer > 0)
+        
+        if (attackCooldown > 0)
         {
-            coolDownTimer -= Time.deltaTime;
+            attackCooldown -= Time.deltaTime;
         }
-        if (hCoolDownTimer > 0)
+        if (dTimeLimiter >0)
         {
-            hCoolDownTimer -= Time.deltaTime;
-        }
-        if (dCoolDownTimer >0)
-        {
-            dCoolDownTimer -= Time.deltaTime;
+            dTimeLimiter -= Time.deltaTime;
         }
 
 
@@ -66,31 +63,29 @@ public class PlayerCombat : MonoBehaviour
         {
 
 
-            if (Input.GetKeyDown(KeyCode.X) && hCoolDownTimer <= 0) 
+            if (Input.GetKeyDown(KeyCode.X) && attackCooldown <= 0) 
             {
             
 
-                if (dCoolDownTimer > 0)
-                
+                if (dTimeLimiter > 0)
                 {
-                DoubleAttack();
-                coolDownTimer = 1.5f;
-                dCoolDownTimer = 0;
-
+                    DoubleAttack();
+                    dTimeLimiter = 0;
+                    attackCooldown = dCoolDown;
             
-                } else {
-                Attack();
-                coolDownTimer = coolDown;
-                dCoolDownTimer = 0.33f;
-            
+                } 
+                else 
+                {
+                    Attack();
+                    dTimeLimiter = 0.33f;
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.F) && hCoolDownTimer <= 0 )
+            if (Input.GetKeyDown(KeyCode.F) && attackCooldown <= 0 )
             {
             
                 HeavyAttack();
-                hCoolDownTimer = hCoolDown;
+                attackCooldown = hCoolDown;
 
 
             }
