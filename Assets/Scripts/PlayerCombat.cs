@@ -15,7 +15,7 @@ public class PlayerCombat : MonoBehaviour
     public float coolDown = 1;
     public float coolDownTimer;
 
-    public float hCoolDown = 3;
+    public float hCoolDown = 1;
     public float hCoolDownTimer;
 
     public float dCoolDownTimer = 0.33f;
@@ -66,7 +66,7 @@ public class PlayerCombat : MonoBehaviour
         {
 
 
-            if (Input.GetKeyDown(KeyCode.X)) 
+            if (Input.GetKeyDown(KeyCode.X) && hCoolDownTimer <= 0) 
             {
             
 
