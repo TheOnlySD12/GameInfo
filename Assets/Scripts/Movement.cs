@@ -37,7 +37,7 @@ public class Movement : MonoBehaviour
     private float dashingTime = 0.2f;
     private float dashingCooldown = 0.3f;
 
-    [SerializeField] private Transform ceelingCheck;
+    public Transform ceelingCheck;
 
     public Animator animator;
 
@@ -74,7 +74,7 @@ public class Movement : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
         
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && !UnderCeeling())
         {
             jumpBufferCounter = jumpBufferTime;
         }
@@ -155,7 +155,7 @@ public class Movement : MonoBehaviour
 
     }
 
-        private void FixedUpdate()
+    private void FixedUpdate()
     {
         if (isDashing)
         {
@@ -174,7 +174,7 @@ public class Movement : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck2.position, 0.2f, groundLayer);
 
     }
-    private bool UnderCeeling()
+    public bool UnderCeeling()
     {
         return Physics2D.OverlapCircle(ceelingCheck.position, 0.2f, groundLayer);
     }
