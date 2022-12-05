@@ -26,6 +26,7 @@ public class PlayerCombat : MonoBehaviour
 
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    public Transform ceelingCheck;
 
     public void SavePlayer(){
         SaveSystem.SavePlayer(this);
@@ -59,7 +60,7 @@ public class PlayerCombat : MonoBehaviour
 
 
         // Determine if it can attack and the type of the attack
-        if (IsGrounded())                     // can attack only if it's not jumping
+        if (IsGrounded() && !UnderCeeling())                     // can attack only if it's not jumping
         {
 
 
@@ -129,7 +130,7 @@ public class PlayerCombat : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
 
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage+5);
             
             
 
@@ -149,5 +150,8 @@ public class PlayerCombat : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
 
     }
-
+    public bool UnderCeeling()
+    {
+        return Physics2D.OverlapCircle(ceelingCheck.position, 0.2f, groundLayer);
+    }
 }
