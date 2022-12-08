@@ -30,11 +30,19 @@ public class Ladder_Climb : MonoBehaviour
             
 
         }
+        if (isClimbing && Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("JUMP");
+            isClimbing = false;
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 10);
+
+        }
 
     }
 
     private void FixedUpdate()
     {
+        
         if (isClimbing)
         {
             rb.gravityScale = 0f;
@@ -49,6 +57,7 @@ public class Ladder_Climb : MonoBehaviour
         {
             rb.gravityScale = 4f;
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
