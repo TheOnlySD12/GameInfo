@@ -13,7 +13,7 @@ public class Movement : MonoBehaviour
 
     public Transform respawnPoint;
     public GameObject fallDetector;
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] public Rigidbody2D rb;
     [SerializeField] private BoxCollider2D BoxCollider2D;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform groundCheck2;
