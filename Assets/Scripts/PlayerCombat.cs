@@ -27,6 +27,7 @@ public class PlayerCombat : MonoBehaviour
     public float hCoolDown = 1;
     public float dCoolDown = 0.33f; 
     private float attackCooldown;
+    private float hSpecialTimer;
 
     public float dTimeLimiter = 0.33f;
 
@@ -56,7 +57,10 @@ public class PlayerCombat : MonoBehaviour
         {
             dTimeLimiter -= Time.deltaTime;
         }
-
+        if (hSpecialTimer > 0)
+        {
+            hSpecialTimer -= Time.deltaTime;
+        }
 
         // Determine if it can attack and the type of the attack
         if (IsGrounded() && !UnderCeeling())                     // can attack only if it's not jumping
@@ -81,11 +85,11 @@ public class PlayerCombat : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.F) && attackCooldown <= 0 )
+            if (Input.GetKeyDown(KeyCode.F) && hSpecialTimer <= 0 )
             {
             
                 HeavyAttack();
-                attackCooldown = hCoolDown;
+                hSpecialTimer = hCoolDown;
 
 
             }
