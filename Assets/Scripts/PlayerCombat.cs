@@ -46,7 +46,13 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+       if (!IsGrounded())
+       {
+            if (Input.GetKeyDown(KeyCode.X) && attackCooldown <= 0)
+            {
+                AirAttack();
+            } 
+       }
         // Set coolDown timers
         
         if (attackCooldown > 0)
@@ -108,6 +114,17 @@ public class PlayerCombat : MonoBehaviour
             
         }
 
+    }
+    void AirAttack()
+    {
+        animator.SetTrigger("AirAttack");
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        foreach (Collider2D enemy in hitEnemies)
+        {
+
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+
+        }
     }
 
     void HeavyAttack()
