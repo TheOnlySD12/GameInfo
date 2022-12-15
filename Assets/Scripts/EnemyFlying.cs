@@ -18,8 +18,8 @@ public class EnemyFlying : MonoBehaviour
     
     
     private float moveTimer;
-    public void Move(float diffx, float diffy, float time)
-    {
+    public void Move(float diffx, float diffy, float time/*, float speedLimit = 10*/) 
+    {//speed limit nu trebuie pt ca nu va functiona enemy pana cand nu ajunge player destul de aproape. Astfel nu exista riscul ca enemy sa zboare din capatul hartii spre player.
         
         
         float distance = Mathf.Sqrt(diffx * diffx + diffy * diffy);
@@ -31,22 +31,35 @@ public class EnemyFlying : MonoBehaviour
             moveTimer -= Time.deltaTime;
         }
         
-        body.velocity = Vector2.zero;
-        
-        
+        //body.velocity = Vector2.zero;
+        Debug.Log(Equals(body.velocity));
+        /*if (body.velocity.magnitude > speedLimit) //aplicare a speed limitului. (nefolosita)
+        {
+            body.velocity.Normalize();
+            body.velocity = body.velocity * speedLimit;
+        }*/
     }
     private float repeatDelay;
     private Vector2 distanceToPlayer;
     private void Update()
     {
-        distanceToPlayer = playerBody.transform.position - body.transform.position;
+        distanceToPlayer = (playerBody.transform.position - body.transform.position) / 10;
 
         if (repeatDelay < 0)
         {
-            randomposition = new Vector2((Random.value - 0.5f) * 5, (Random.value - 0.5f) * 2);
+            randomposition = (new Vector2((Random.value - 0.5f), (Random.value - 0.5f))) *1.5f;
             Move(randomposition.x + distanceToPlayer.x, randomposition.y + distanceToPlayer.y, movespeed);
-            repeatDelay = 2;
-            Debug.Log("Angel moved: " + randomposition.x + " " + randomposition.y);
+            Debug.Log(("Angel moved: " + randomposition.x + distanceToPlayer.x)+" "+(randomposition.y + distanceToPlayer.y));
+            if (distanceToPlayer.magnitude > 1) 
+            {
+                repeatDelay = 2 / distanceToPlayer.magnitude;
+
+            }
+            else
+            {
+                repeatDelay = 2;
+            }
+
         }
         repeatDelay -= Time.deltaTime;
         
