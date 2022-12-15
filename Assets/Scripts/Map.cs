@@ -13,11 +13,6 @@ public class Map : MonoBehaviour
     public void LevelOne() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-
-    public void LevelOneTest() {
-        SceneManager.LoadScene("SaveMoveTest");
-    }
-
     public void QuitGame() {
         Application.Quit();
     }
