@@ -12,11 +12,11 @@ public class LevelLoader : MonoBehaviour
 
     IEnumerator LoadAsynchronously (int sceneIndex)
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex)
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
 
         while (operation.isDone)
         {
-            Debug.log(operation.progress);
+            Debug.Log(operation.progress);
 
             yield return null;
         }
