@@ -446,7 +446,7 @@ Transform:
   m_Children:
   - {fileID: 371024669}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &43409051
 GameObject:
@@ -1008,6 +1008,8 @@ MonoBehaviour:
   InamicFunctieDestroy: {fileID: 90998591}
   delayMoarte: 0.15
   animator: {fileID: 90998594}
+  body: {fileID: 0}
+  moveSpeed: 0
 --- !u!95 &90998594
 Animator:
   serializedVersion: 4
@@ -1754,7 +1756,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &294725457
 Canvas:
   m_ObjectHideFlags: 0
@@ -1764,8 +1766,8 @@ Canvas:
   m_GameObject: {fileID: 294725453}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 2
+  m_Camera: {fileID: 314281938}
   m_PlaneDistance: 100
   m_PixelPerfect: 1
   m_ReceivesEvents: 1
@@ -1783,20 +1785,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294725453}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1804005287}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 314281939}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1968.65, y: 1070.57}
+  m_SizeDelta: {x: 3840, y: 2160}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &294725459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2092,7 +2094,10 @@ Transform:
   m_LocalPosition: {x: -48.65, y: 9.43, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1270824046}
+  - {fileID: 294725458}
+  - {fileID: 1596248647}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2403,6 +2408,8 @@ MonoBehaviour:
   InamicFunctieDestroy: {fileID: 373827888}
   delayMoarte: 0.15
   animator: {fileID: 373827891}
+  body: {fileID: 0}
+  moveSpeed: 0
 --- !u!95 &373827891
 Animator:
   serializedVersion: 4
@@ -3031,6 +3038,8 @@ MonoBehaviour:
   InamicFunctieDestroy: {fileID: 665151106}
   delayMoarte: 0.01
   animator: {fileID: 665151108}
+  body: {fileID: 0}
+  moveSpeed: 0
 --- !u!95 &665151108
 Animator:
   serializedVersion: 4
@@ -3111,6 +3120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 665151110}
+  playerBody: {fileID: 0}
   movespeed: 0.33
 --- !u!212 &665151112
 SpriteRenderer:
@@ -3492,7 +3502,7 @@ Transform:
   - {fileID: 373827889}
   - {fileID: 90998592}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &854558456
 GameObject:
@@ -3926,6 +3936,8 @@ MonoBehaviour:
   InamicFunctieDestroy: {fileID: 911356565}
   delayMoarte: 0.01
   animator: {fileID: 911356567}
+  body: {fileID: 0}
+  moveSpeed: 0
 --- !u!95 &911356567
 Animator:
   serializedVersion: 4
@@ -4006,6 +4018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 911356569}
+  playerBody: {fileID: 0}
   movespeed: 0.33
 --- !u!212 &911356571
 SpriteRenderer:
@@ -10448,7 +10461,7 @@ Transform:
   - {fileID: 1473164814}
   - {fileID: 911356572}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1020610800
 GameObject:
@@ -11580,13 +11593,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270824044}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -48.65, y: 9.43, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.475, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1067674789}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 314281939}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1289148268
 GameObject:
@@ -12258,7 +12271,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1473164807
 GameObject:
@@ -12298,6 +12311,8 @@ MonoBehaviour:
   InamicFunctieDestroy: {fileID: 1473164807}
   delayMoarte: 0.01
   animator: {fileID: 1473164809}
+  body: {fileID: 0}
+  moveSpeed: 0
 --- !u!95 &1473164809
 Animator:
   serializedVersion: 4
@@ -12378,6 +12393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 1473164811}
+  playerBody: {fileID: 0}
   movespeed: 0.33
 --- !u!212 &1473164813
 SpriteRenderer:
@@ -12490,7 +12506,7 @@ Transform:
   - {fileID: 949655864}
   - {fileID: 276644243}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1517917718
 GameObject:
@@ -12769,8 +12785,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596248642}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12780,12 +12796,12 @@ RectTransform:
   - {fileID: 1289148269}
   - {fileID: 1425711721}
   - {fileID: 895791427}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 314281939}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 48.65, y: -9.43}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &1611945295
@@ -12928,7 +12944,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1675012628
 GameObject:
@@ -13013,6 +13029,8 @@ MonoBehaviour:
   InamicFunctieDestroy: {fileID: 1767110020}
   delayMoarte: 0.15
   animator: {fileID: 1767110023}
+  body: {fileID: 0}
+  moveSpeed: 0
 --- !u!95 &1767110023
 Animator:
   serializedVersion: 4
@@ -13381,7 +13399,7 @@ Transform:
   - {fileID: 1675012629}
   - {fileID: 433920383}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1908904897
 MonoBehaviour:
