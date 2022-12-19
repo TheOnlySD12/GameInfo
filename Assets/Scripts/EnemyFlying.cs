@@ -11,8 +11,9 @@ public class EnemyFlying : MonoBehaviour
     public Rigidbody2D playerBody;
 
     private Vector2 randomposition;
+    private bool isAlerted;
 
-    public float movespeed = 0.33f;
+    private float movespeed = 0.33f;
     
     
     
@@ -31,7 +32,6 @@ public class EnemyFlying : MonoBehaviour
             moveTimer -= Time.deltaTime;
         }
         
-        //body.velocity = Vector2.zero;
         Debug.Log(Equals(body.velocity));
         /*if (body.velocity.magnitude > speedLimit) //aplicare a speed limitului. (nefolosita)
         {
@@ -45,11 +45,16 @@ public class EnemyFlying : MonoBehaviour
     {
         distanceToPlayer = (playerBody.transform.position - body.transform.position) / 10;
 
-        if (repeatDelay < 0)
+        if (distanceToPlayer.magnitude < 0.75)
         {
-            randomposition = (new Vector2((Random.value - 0.5f), (Random.value - 0.5f))) *1.5f;
-            Move(randomposition.x + distanceToPlayer.x, randomposition.y + distanceToPlayer.y, movespeed);
-            Debug.Log(("Angel moved: " + randomposition.x + distanceToPlayer.x)+" "+(randomposition.y + distanceToPlayer.y));
+            isAlerted = true;
+        }
+
+        if (repeatDelay < 0 && isAlerted)
+        {
+            randomposition = new Vector2(Random.value - 0.5f, Random.value - 0.5f) /2;
+            Move(randomposition.x + distanceToPlayer.x, randomposition.y + distanceToPlayer.y + 0.75f, movespeed);
+            Debug.Log("Angel moved: " + randomposition.x + distanceToPlayer.x+" "+(randomposition.y + distanceToPlayer.y));
             if (distanceToPlayer.magnitude > 1) 
             {
                 repeatDelay = 2 / distanceToPlayer.magnitude;
@@ -57,7 +62,7 @@ public class EnemyFlying : MonoBehaviour
             }
             else
             {
-                repeatDelay = 2;
+                repeatDelay = 1.18f;
             }
 
         }
