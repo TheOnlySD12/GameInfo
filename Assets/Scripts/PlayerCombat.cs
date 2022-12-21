@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using System.IO;
+using UnityEngine.Animations;
 
 public class PlayerCombat : MonoBehaviour
 {
@@ -16,16 +17,23 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    [SerializeField] public Rigidbody2D rb;
+    private float bouncePower = 14f;
+
     public Animator animator;
- 
+
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
 
+    public Transform downAirAttackPoint;
+    public float downAirAttackRange = 0.5f;
+    private bool lookingDown;
+
     public float coolDown = 1;
-    
+
     public float hCoolDown = 1;
-    public float dCoolDown = 0.33f; 
+    public float dCoolDown = 0.33f;
     private float attackCooldown;
     private float hSpecialTimer;
 
@@ -39,27 +47,39 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     public Transform ceelingCheck;
 
-    public void SavePlayer(){
+    public void SavePlayer() {
         SaveSystem.SavePlayer(this);
     }
 
     // Update is called once per frame
     void Update()
     {
-       if (!IsGrounded())
-       {
-            if (Input.GetKeyDown(KeyCode.X) && attackCooldown <= 0)
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            lookingDown = true;
+        }
+        if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            lookingDown = false;
+        }
+        if (!IsGrounded())
+        {
+            if (Input.GetKeyDown(KeyCode.X) && attackCooldown <= 0 && !lookingDown)
             {
                 AirAttack();
-            } 
-       }
+            }
+            if (lookingDown && Input.GetKeyDown(KeyCode.X))
+            {
+                DownAirAttack();
+            }
+        }
         // Set coolDown timers
-        
+
         if (attackCooldown > 0)
         {
             attackCooldown -= Time.deltaTime;
         }
-        if (dTimeLimiter >0)
+        if (dTimeLimiter > 0)
         {
             dTimeLimiter -= Time.deltaTime;
         }
@@ -73,27 +93,27 @@ public class PlayerCombat : MonoBehaviour
         {
 
 
-            if (Input.GetKeyDown(KeyCode.X) && attackCooldown <= 0) 
+            if (Input.GetKeyDown(KeyCode.X) && attackCooldown <= 0)
             {
-            
+
 
                 if (dTimeLimiter > 0)
                 {
                     DoubleAttack();
                     dTimeLimiter = 0;
                     attackCooldown = dCoolDown;
-            
-                } 
-                else 
+
+                }
+                else
                 {
                     Attack();
                     dTimeLimiter = 0.33f;
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.F) && hSpecialTimer <= 0 )
+            if (Input.GetKeyDown(KeyCode.F) && hSpecialTimer <= 0)
             {
-            
+
                 HeavyAttack();
                 hSpecialTimer = hCoolDown;
 
@@ -102,7 +122,7 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    void Attack()
+    void Attack()//atac normal
     {
 
         animator.SetTrigger("Attack");
@@ -111,11 +131,11 @@ public class PlayerCombat : MonoBehaviour
         {
 
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
-            
+
         }
 
     }
-    void AirAttack()
+    void AirAttack()//atac in aer
     {
         animator.SetTrigger("AirAttack");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
@@ -126,23 +146,34 @@ public class PlayerCombat : MonoBehaviour
 
         }
     }
+    void DownAirAttack()//atac in aer in jos
+    {
 
-    void HeavyAttack()
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(downAirAttackPoint.position, downAirAttackRange, enemyLayers);
+        foreach (Collider2D enemy in hitEnemies)
+        {
+
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            rb.velocity = new Vector2(rb.velocity.x, bouncePower);
+        }
+    }
+
+    void HeavyAttack()//atac mai puternic
     {
 
         animator.SetTrigger("HeavyAttack");
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position,attackRange,enemyLayers);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
 
             enemy.GetComponent<Enemy>().TakeDamage(heavyAttackDamage);
-            
+
         }
-        
-    
+
+
     }
 
-    void DoubleAttack()
+    void DoubleAttack()//atac dublu
     {
 
         animator.SetTrigger("DoubleAttack");
@@ -150,9 +181,9 @@ public class PlayerCombat : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
 
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage+5);
-            
-            
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage + 5);
+
+
 
         }
 
@@ -162,14 +193,15 @@ public class PlayerCombat : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()//pentru a vizualiza distanta atacului din unity editor
     {
         if (attackPoint == null)
             return;
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-
+        Gizmos.DrawWireSphere(downAirAttackPoint.position, downAirAttackRange);
     }
+
     public bool UnderCeeling()
     {
         return Physics2D.OverlapCircle(ceelingCheck.position, 0.2f, groundLayer);
