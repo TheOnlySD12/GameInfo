@@ -30,6 +30,10 @@ public class PlayerCombat : MonoBehaviour
     public float downAirAttackRange = 0.5f;
     private bool lookingDown;
 
+    public Transform upAirAttackPoint;
+    public float upAirAttackRange = 0.5f;
+    private bool lookingUp;
+
     public float coolDown = 1;
 
     public float hCoolDown = 1;
@@ -54,7 +58,15 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow))//detecteaza daca se uita in sus
+        {
+            lookingUp = true;
+        }
+        if (Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            lookingUp = false;
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))//detecteaza daca se uita in jos
         {
             lookingDown = true;
         }
@@ -64,13 +76,17 @@ public class PlayerCombat : MonoBehaviour
         }
         if (!IsGrounded())
         {
-            if (Input.GetKeyDown(KeyCode.X) && attackCooldown <= 0 && !lookingDown)
+            if (Input.GetKeyDown(KeyCode.X) && attackCooldown <= 0 && !lookingDown && !lookingUp)
             {
                 AirAttack();
             }
             if (lookingDown && Input.GetKeyDown(KeyCode.X))
             {
                 DownAirAttack();
+            }
+            if (lookingUp && Input.GetKeyDown(KeyCode.X))
+            {
+                UpAirAttack();
             }
         }
         // Set coolDown timers
@@ -91,9 +107,13 @@ public class PlayerCombat : MonoBehaviour
         // Determine if it can attack and the type of the attack
         if (IsGrounded() && !UnderCeeling())                     // can attack only if it's not jumping
         {
+            if(Input.GetKeyDown(KeyCode.X) && lookingUp)
+            {
+                UpAirAttack();
+            }
 
 
-            if (Input.GetKeyDown(KeyCode.X) && attackCooldown <= 0)
+            if (Input.GetKeyDown(KeyCode.X) && attackCooldown <= 0 && !lookingUp)
             {
 
 
@@ -111,7 +131,7 @@ public class PlayerCombat : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.F) && hSpecialTimer <= 0)
+            if (Input.GetKeyDown(KeyCode.F) && hSpecialTimer <= 0 && !lookingUp)
             {
 
                 HeavyAttack();
@@ -158,6 +178,16 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    void UpAirAttack()//atac in aer in sus
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(upAirAttackPoint.position, upAirAttackRange, enemyLayers);
+        foreach (Collider2D enemy in hitEnemies)
+        {
+
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+        }
+    }
+
     void HeavyAttack()//atac mai puternic
     {
 
@@ -200,6 +230,7 @@ public class PlayerCombat : MonoBehaviour
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
         Gizmos.DrawWireSphere(downAirAttackPoint.position, downAirAttackRange);
+        Gizmos.DrawWireSphere(upAirAttackPoint.position, upAirAttackRange);
     }
 
     public bool UnderCeeling()
