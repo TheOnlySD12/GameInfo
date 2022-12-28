@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     public Animator animator;
     public Rigidbody2D body;
     public float moveSpeed;
+    private float bouncePower = 10f;
 
     void Start()
     {
@@ -38,6 +39,16 @@ public class Enemy : MonoBehaviour
         Destroy(InamicFunctieDestroy, delayMoarte);
 
     }
-
+    
+    public void TakeUpDamage(int damage)
+    {
+        currentHealth -= damage;
+        body.velocity = new Vector2(body.velocity.x, bouncePower);
+        animator.SetTrigger("Hit");
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
     
 }
