@@ -16,9 +16,12 @@ public class Enemy : MonoBehaviour
     public float moveSpeed;
     private float bouncePower = 10f;
 
+    public HealthBar healthBar;
+
     void Start()
     {
         currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     public void TakeDamage(int damage)
@@ -30,6 +33,7 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+        healthBar.SetHealth(currentHealth);
     }
 
     void Die()
@@ -49,6 +53,7 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+        healthBar.SetHealth(currentHealth);
     }
     
 }
