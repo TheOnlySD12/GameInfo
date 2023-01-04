@@ -14,10 +14,58 @@ public class EnemyFlying : MonoBehaviour
     private bool isAlerted;
 
     private float movespeed = 0.33f;
-    
-    
-    
-    
+
+    public int maxHealth = 200;
+    int currentHealth;
+    public GameObject InamicFunctieDestroy;
+    public float delayMoarte;
+    public Animator animator;
+    private float bouncePower = 10f;
+
+
+
+
+
+    public HealthBar healthBar;
+
+    void Start()
+    {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+    }
+
+    public void TakeDamage(int damage)
+    {
+
+        currentHealth -= damage;
+        animator.SetTrigger("Hit");
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+        healthBar.SetHealth(currentHealth);
+    }
+
+    void Die()
+    {
+
+        Debug.Log("Enemy died!");
+        Destroy(InamicFunctieDestroy, delayMoarte);
+
+    }
+
+    public void TakeUpDamage(int damage)
+    {
+        currentHealth -= damage;
+        body.velocity = new Vector2(body.velocity.x, bouncePower);
+        animator.SetTrigger("Hit");
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+        healthBar.SetHealth(currentHealth);
+    }
+
     private float moveTimer;
     public void Move(float diffx, float diffy, float time/*, float speedLimit = 10*/) 
     {//speed limit nu trebuie pt ca nu va functiona enemy pana cand nu ajunge player destul de aproape. Astfel nu exista riscul ca enemy sa zboare din capatul hartii spre player.

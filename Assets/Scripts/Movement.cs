@@ -127,12 +127,12 @@ public class Movement : MonoBehaviour
             BoxCollider2D.offset = new Vector2(-0.01607659f, -0.1423518f);
         }
 
-        if (Input.GetAxisRaw("Horizontal") < 0 && !facingRight)
+        if (horizontal < 0 && !facingRight)
         {         // se intoarce stanaga/ dreapta
             Flip();
 
         }
-        if (Input.GetAxisRaw("Horizontal") > 0 && facingRight)        // se intoarce stanaga/ dreapta
+        if (horizontal > 0 && facingRight)        // se intoarce stanaga/ dreapta
         {
             Flip();
         }
