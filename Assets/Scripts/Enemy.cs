@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (IsGroundedForward())
         {
