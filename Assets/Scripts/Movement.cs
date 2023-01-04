@@ -44,7 +44,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
-        
+
 
     }
     private void Awake()
@@ -60,7 +60,7 @@ public class Movement : MonoBehaviour
         {
             return;
         }
-        
+
 
         if (IsGrounded())
         {
@@ -73,8 +73,8 @@ public class Movement : MonoBehaviour
 
         horizontal = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
-        
-        if (Input.GetButtonDown("Jump") && !UnderCeeling())
+
+        if (Input.GetButtonDown("Jump") && !UnderCeiling())
         {
             jumpBufferCounter = jumpBufferTime;
         }
@@ -114,12 +114,12 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && IsGrounded())
         {
             speed = 4f;
-            animator.SetBool("IsCrouching",true);
+            animator.SetBool("IsCrouching", true);
             BoxCollider2D.size = new Vector2(0.5124145f, 0.6913913f);
             BoxCollider2D.offset = new Vector2(-0.0112071f, -0.2856956f);
 
         }
-        if (!UnderCeeling() && !Input.GetKey(KeyCode.LeftShift))
+        if (!UnderCeiling() && !Input.GetKey(KeyCode.LeftShift))
         {
             speed = 8f;
             animator.SetBool("IsCrouching", false);
@@ -146,7 +146,7 @@ public class Movement : MonoBehaviour
         canDash = false;
         isDashing = true;
         rb.gravityScale = 0f;
-        rb.velocity = new Vector2(transform.localScale.x * dashingPower,0f);
+        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         yield return new WaitForSeconds(dashingTime);
         rb.gravityScale = 4f;
         isDashing = false;
@@ -174,14 +174,14 @@ public class Movement : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck2.position, 0.2f, groundLayer);
 
     }
-    public bool UnderCeeling()
+    public bool UnderCeiling()
     {
         return Physics2D.OverlapCircle(ceelingCheck.position, 0.2f, groundLayer);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+
         if (collision.CompareTag("FallDetector"))
         {
             Debug.Log("Collision!!");
