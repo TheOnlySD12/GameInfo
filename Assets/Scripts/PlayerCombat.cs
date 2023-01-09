@@ -150,7 +150,7 @@ public class PlayerCombat : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
 
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            enemy.GetComponent<GenericEnemy>().TakeDamage(attackDamage);
 
         }
 
@@ -162,7 +162,7 @@ public class PlayerCombat : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
 
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            enemy.GetComponent<GenericEnemy>().TakeDamage(attackDamage);
 
         }
     }
@@ -173,7 +173,7 @@ public class PlayerCombat : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
 
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            enemy.GetComponent<GenericEnemy>().TakeDamage(attackDamage);
             rb.velocity = new Vector2(rb.velocity.x, bouncePower);
         }
     }
@@ -184,7 +184,7 @@ public class PlayerCombat : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
 
-            enemy.GetComponent<Enemy>().TakeUpDamage(attackDamage);
+            enemy.GetComponent<GenericEnemy>().TakeUpDamage(attackDamage);
         }
     }
 
@@ -196,7 +196,7 @@ public class PlayerCombat : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
 
-            enemy.GetComponent<Enemy>().TakeDamage(heavyAttackDamage);
+            enemy.GetComponent<GenericEnemy>().TakeDamage(heavyAttackDamage);
 
         }
 
@@ -211,7 +211,7 @@ public class PlayerCombat : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
 
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage + 5);
+            enemy.GetComponent<GenericEnemy>().TakeDamage(attackDamage + 5);
 
 
 
