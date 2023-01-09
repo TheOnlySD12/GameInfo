@@ -7,11 +7,11 @@ using System.IO;
 public class Map : MonoBehaviour
 {
     public void Back() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene("SavesMenu");
     }
 
     public void LevelOne() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("movement test");
     }
     public void QuitGame() {
         Application.Quit();
