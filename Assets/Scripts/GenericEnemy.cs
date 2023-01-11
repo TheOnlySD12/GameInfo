@@ -9,7 +9,7 @@ public class GenericEnemy : MonoBehaviour
     int currentHealth;
     public GameObject InamicFunctieDestroy;
     public float delayMoarte;
-    Animator animator;
+    public Animator animator;
     public Rigidbody2D body;
     private float bouncePower = 10f;
 
