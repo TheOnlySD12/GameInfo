@@ -144,26 +144,30 @@ public class PlayerCombat : MonoBehaviour
 
     void Attack()//atac normal
     {
-
-        animator.SetTrigger("Attack");
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        foreach (Collider2D enemy in hitEnemies)
+        if (Time.timeScale > 0)
         {
+            animator.SetTrigger("Attack");
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+            foreach (Collider2D enemy in hitEnemies)
+            {
 
-            enemy.GetComponent<GenericEnemy>().TakeDamage(attackDamage);
+                enemy.GetComponent<GenericEnemy>().TakeDamage(attackDamage);
 
+            }
         }
-
     }
     void AirAttack()//atac in aer
     {
-        animator.SetTrigger("AirAttack");
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        foreach (Collider2D enemy in hitEnemies)
+        if (Time.timeScale > 0)
         {
+            animator.SetTrigger("AirAttack");
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+            foreach (Collider2D enemy in hitEnemies)
+            {
 
-            enemy.GetComponent<GenericEnemy>().TakeDamage(attackDamage);
+                enemy.GetComponent<GenericEnemy>().TakeDamage(attackDamage);
 
+            }
         }
     }
     void DownAirAttack()//atac in aer in jos
@@ -190,33 +194,36 @@ public class PlayerCombat : MonoBehaviour
 
     void HeavyAttack()//atac mai puternic
     {
-
-        animator.SetTrigger("HeavyAttack");
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        foreach (Collider2D enemy in hitEnemies)
+        if (Time.timeScale > 0)
         {
+            animator.SetTrigger("HeavyAttack");
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+            foreach (Collider2D enemy in hitEnemies)
+            {
 
-            enemy.GetComponent<GenericEnemy>().TakeDamage(heavyAttackDamage);
+                enemy.GetComponent<GenericEnemy>().TakeDamage(heavyAttackDamage);
 
+            }
         }
-
 
     }
 
     void DoubleAttack()//atac dublu
     {
 
-        animator.SetTrigger("DoubleAttack");
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        foreach (Collider2D enemy in hitEnemies)
+        if (Time.timeScale > 0)
         {
+            animator.SetTrigger("DoubleAttack");
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+            foreach (Collider2D enemy in hitEnemies)
+            {
 
-            enemy.GetComponent<GenericEnemy>().TakeDamage(attackDamage + 5);
+                enemy.GetComponent<GenericEnemy>().TakeDamage(attackDamage + 5);
 
 
 
+            }
         }
-
     }
     private bool IsGrounded()
     {
