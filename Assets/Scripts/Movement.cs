@@ -85,9 +85,12 @@ public class Movement : MonoBehaviour
 
         if (jumpBufferCounter > 0f && coyoteTimeCounter > 0)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-            animator.SetBool("IsJumping", true);
-            jumpBufferCounter = 0f;
+            if (Time.timeScale > 0)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+                animator.SetBool("IsJumping", true);
+                jumpBufferCounter = 0f;
+            }
         }
 
 
@@ -108,10 +111,15 @@ public class Movement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.C) && canDash)
         {
-            StartCoroutine(Dash());
-            animator.SetTrigger("Dash");
+            
+            if (Time.timeScale > 0)
+            {
+                StartCoroutine(Dash());
+                animator.SetTrigger("Dash");
+            }
+            
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift) && IsGrounded())
+        if (Input.GetKeyDown(KeyCode.LeftShift) && IsGrounded() &&  Time.timeScale > 0)
         {
             speed = 4f;
             animator.SetBool("IsCrouching", true);
