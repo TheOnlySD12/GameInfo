@@ -200,10 +200,13 @@ public class Movement : MonoBehaviour
 
     void Flip()
     {
+        if (Time.timeScale>0)
+        {
+            Vector3 currentScale = gameObject.transform.localScale;
+            currentScale.x *= -1;
+            gameObject.transform.localScale = currentScale;
+            facingRight = !facingRight;    //flip stanga dreapta
+        }
 
-        Vector3 currentScale = gameObject.transform.localScale;
-        currentScale.x *= -1;
-        gameObject.transform.localScale = currentScale;
-        facingRight = !facingRight;    //flip stanga dreapta
     }
 }

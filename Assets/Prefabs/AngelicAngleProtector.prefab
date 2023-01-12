@@ -420,6 +420,7 @@ MonoBehaviour:
   maxHealth: 200
   InamicFunctieDestroy: {fileID: 6118306543208114950}
   delayMoarte: 0
+  animator: {fileID: 6118306543208114972}
   body: {fileID: 6118306543208114944}
   healthBar: {fileID: 3920663520824527067}
 --- !u!1 &8059574842747382053
