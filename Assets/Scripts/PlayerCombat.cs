@@ -154,7 +154,7 @@ public class PlayerCombat : MonoBehaviour
                 enemy.GetComponent<GenericEnemy>().TakeDamage(attackDamage);
 
             }
-        }
+        }   
     }
     void AirAttack()//atac in aer
     {

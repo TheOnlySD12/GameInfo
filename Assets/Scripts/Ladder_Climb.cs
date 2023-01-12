@@ -19,12 +19,11 @@ public class Ladder_Climb : MonoBehaviour
     public Animator animator;
 
 
-    // Update is called once per frame
     void Update()
     {
         vertical = Input.GetAxis("Vertical");
 
-        if (isLadder && Mathf.Abs(vertical) > 0.01)
+        if (isLadder && Mathf.Abs(vertical) > 0f)
         { 
             isClimbing = true;
             
