@@ -112,32 +112,34 @@ public class PlayerCombat : MonoBehaviour
                 UpAirAttack();
             }
 
-
-            if (Input.GetKeyDown(KeyCode.X) && attackCooldown <= 0 && !lookingUp)
+            if (!lookingUp)
             {
-
-
-                if (dTimeLimiter > 0)
+                if (Input.GetKeyDown(KeyCode.X) && attackCooldown <= 0 )
                 {
-                    DoubleAttack();
-                    dTimeLimiter = 0;
-                    attackCooldown = dCoolDown;
+
+
+                    if (dTimeLimiter > 0)
+                    {
+                        DoubleAttack();
+                        dTimeLimiter = 0;
+                        attackCooldown = dCoolDown;
+
+                    }
+                    else
+                    {
+                        Attack();
+                        dTimeLimiter = 0.33f;
+                    }
+                }
+
+                if (Input.GetKeyDown(KeyCode.F) && hSpecialTimer <= 0 )
+                {
+
+                    HeavyAttack();
+                    hSpecialTimer = hCoolDown;
+
 
                 }
-                else
-                {
-                    Attack();
-                    dTimeLimiter = 0.33f;
-                }
-            }
-
-            if (Input.GetKeyDown(KeyCode.F) && hSpecialTimer <= 0 && !lookingUp)
-            {
-
-                HeavyAttack();
-                hSpecialTimer = hCoolDown;
-
-
             }
         }
     }

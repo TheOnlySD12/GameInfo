@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.Mathematics;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.XR;
@@ -15,6 +16,9 @@ public class Astronaut : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform forwardGroundCheck;
     private Rigidbody2D body;
+
+    public Animator animator;
+    bool facingRight;
 
     private void Start()
     {
@@ -42,6 +46,19 @@ public class Astronaut : MonoBehaviour
     private bool moveDirection;// 1 = positive x, -1 = negative x
     private void Update()
     {
+         
+
+        if (Convert.ToInt32(moveDirection) <= 0 && !facingRight)
+        {         // se intoarce stanaga/ dreapta
+            Flip();
+
+        }
+        if (Convert.ToInt32(moveDirection) > 0 && facingRight)        // se intoarce stanaga/ dreapta
+        {
+            Flip();
+        }
+
+
         moveTimer -= Time.deltaTime;
         
         if (moveTimer > 0)
@@ -60,11 +77,17 @@ public class Astronaut : MonoBehaviour
             moveTimer = Random.value * 2 + 1.5f;
             moveDirection = (Random.value - 0.5f) > 0;
         }
-        
+        animator.SetFloat("Speed", Mathf.Abs(body.velocity.x));
     }
 
     
+    private void Flip()
+    {
 
+        facingRight = !facingRight;
+        //flip stanga dreapta
+        transform.Rotate(0f,180f,0f);
+    }
     
     /*void Walk(float x)
     {
