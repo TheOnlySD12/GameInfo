@@ -34,7 +34,7 @@ public class Ladder_Climb : MonoBehaviour
         {
             Debug.Log("JUMP");
             isClimbing = false;
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 10);
+            
 
         }
 
