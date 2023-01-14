@@ -22,10 +22,13 @@ public class Bullet : MonoBehaviour
         {
             player.TakeBulletDamage(bulletDamage);
         }
+        if (hitInfo.CompareTag("Player") || hitInfo.CompareTag("Ground"))
+        {
+            Destroy(gameObject);
 
-        
+        }
 
-        //Destroy(gameObject);
     }
+
 
 }
