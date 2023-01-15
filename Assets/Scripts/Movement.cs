@@ -18,8 +18,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform groundCheck2;
     [SerializeField] private LayerMask groundLayer;
-    private float speed = 8f;
-    private float jumpingPower = 16f;
+    private float speed = 4f;
+    private float jumpingPower = 11f;
     private float horizontal;
 
     public float FallingThreshold = -0.3f;
@@ -121,7 +121,7 @@ public class Movement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.LeftShift) && IsGrounded() &&  Time.timeScale > 0)
         {
-            speed = 4f;
+            speed = 2f;
             animator.SetBool("IsCrouching", true);
             BoxCollider2D.size = new Vector2(0.5124145f, 0.6913913f);
             BoxCollider2D.offset = new Vector2(-0.0112071f, -0.2856956f);
@@ -129,7 +129,7 @@ public class Movement : MonoBehaviour
         }
         if (!UnderCeiling() && !Input.GetKey(KeyCode.LeftShift))
         {
-            speed = 8f;
+            speed = 4f;
             animator.SetBool("IsCrouching", false);
             BoxCollider2D.size = new Vector2(0.3790072f, 0.9818009f);
             BoxCollider2D.offset = new Vector2(-0.01607659f, -0.1423518f);

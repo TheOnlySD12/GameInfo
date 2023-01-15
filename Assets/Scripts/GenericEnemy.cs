@@ -11,7 +11,7 @@ public class GenericEnemy : MonoBehaviour
     public float delayMoarte;
     public Animator animator;
     public Rigidbody2D body;
-    private float bouncePower = 10f;
+    public float bouncePower = 10f;
 
 
     public HealthBar healthBar;
