@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Map.unity
     guid: b8a3368475a1dd3418b1758aded71f06
   - enabled: 1
-    path: Assets/Scenes/movement test.unity
+    path: Assets/Scenes/level 1.unity
     guid: 791e1c7519c3191499d620f4c00b4278
   - enabled: 1
     path: Assets/Scenes/PauseMenuRaul.unity
