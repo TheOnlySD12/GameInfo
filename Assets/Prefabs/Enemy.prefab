@@ -437,7 +437,7 @@ Transform:
   m_GameObject: {fileID: 6307379906861259398}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 46.64, y: -16.93, z: 6.3823752}
-  m_LocalScale: {x: 2.5092733, y: 2.5092733, z: 2.5092733}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6307379906072146325}
@@ -616,6 +616,7 @@ MonoBehaviour:
   delayMoarte: 0
   animator: {fileID: 6307379906861259397}
   body: {fileID: 6307379906861259455}
+  bouncePower: 10
   healthBar: {fileID: 6307379905169643194}
 --- !u!114 &6307379906861259453
 MonoBehaviour:
