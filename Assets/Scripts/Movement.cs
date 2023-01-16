@@ -44,7 +44,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
-
+        transform.position = respawnPoint.position;
 
     }
     private void Awake()
