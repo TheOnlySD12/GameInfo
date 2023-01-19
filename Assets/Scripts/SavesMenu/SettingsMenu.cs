@@ -5,25 +5,20 @@ using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Settingsmenu : MonoBehaviour
-{
-    public AudioMixer audioMixer;
+public class SettingsMenu : MonoBehaviour {
 
+    public AudioMixer audioMixer;
     public TMPro.TMP_Dropdown resolutionDropdown;
-    
     Resolution[] resolutions;
 
-    void Start () 
-    {
+    void Start() {
+
         resolutions = Screen.resolutions;
-
         resolutionDropdown.ClearOptions();
-
         List<string> options = new List<string>();
-
         int currentResolutionIndex = 0;
-        for (int i = 0; i < resolutions.Length; i++)
-        {
+
+        for (int i = 0; i < resolutions.Length; i++) {
             string option = resolutions[i].width + " x " + resolutions[i].height;
             options.Add(option);
 
@@ -37,32 +32,22 @@ public class Settingsmenu : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
-    } 
-
-    public void SetResolution (int resolutionIndex)
-    {
-        Resolution resolution = resolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-    public void SetVolume (float volume)
-    {
-        audioMixer.SetFloat("volume", volume);
-    }
-    
-    public void SetQuality (int qualityIndex)
-    {
-        QualitySettings.SetQualityLevel(qualityIndex); 
+    public void SetQuality(int qualityIndex) {
+        QualitySettings.SetQualityLevel(qualityIndex);
     }
 
-    public void SetFullscreen (bool isFullscreen)
-    {
+    public void SetFullscreen(bool isFullscreen) {
         Screen.fullScreen = isFullscreen;
     }
 
-    public void BackToGameButton()
-    {
-        SceneManager.LoadScene("PauseMenuRaul");
+    public void SetVolume(float volume) {
+        audioMixer.SetFloat("volume", volume);
     }
 
+    public void SetResolution(int resolutionIndex) {
+        Resolution resolution = resolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
 }

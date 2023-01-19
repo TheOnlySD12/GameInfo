@@ -11,7 +11,7 @@ public class Map : MonoBehaviour
     }
 
     public void LevelOne() {
-        SceneManager.LoadScene("movement test 1");
+        SceneManager.LoadScene("level 1");
     }
     public void QuitGame() {
         Application.Quit();

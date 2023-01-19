@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-//NU umblati va rog
+//PauseMenu pentru levele
 public class PauseMenu : MonoBehaviour {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
     public GameObject settingsMenuUI;
 
-    void Update()
-    {
+    void Update(){
         if (Input.GetKeyDown(KeyCode.Escape)){
             if (GameIsPaused){
                 Resume();
@@ -20,29 +19,20 @@ public class PauseMenu : MonoBehaviour {
         }
     }
 
-    public void Back2Menu(){
-        Time.timeScale = 1f;
-        GameIsPaused = false;
-        SceneManager.LoadScene("SavesMenu");
-    }
-
     public void Resume(){
-        if (settingsMenuUI){
-            settingsMenuUI.SetActive(false);
-            
-        }
+        settingsMenuUI.SetActive(false);
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
 
     public void Pause(){
-        GameIsPaused = true;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
+        GameIsPaused = true;
     }
 
-    public void QuitGame(){
+    public void Quit(){
         Time.timeScale = 1f;
         GameIsPaused = false;
         SceneManager.LoadScene("Map");
