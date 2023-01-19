@@ -2531,6 +2531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 428015006}
+  settingsMenuUI: {fileID: 0}
 --- !u!1 &910971129
 GameObject:
   m_ObjectHideFlags: 0
@@ -3270,9 +3271,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 24100000, guid: fe64160447a13b746a2eeefbe3c00d9f, type: 2}
         m_TargetAssemblyTypeName: Settingsmenu, Assembly-CSharp
-        m_MethodName: SetVolume
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
