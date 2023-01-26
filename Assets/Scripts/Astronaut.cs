@@ -44,6 +44,7 @@ public class Astronaut : MonoBehaviour
     private float moveTimer;
     private float moveDuration;
     private bool moveDirection;// 1 = positive x, -1 = negative x
+    private float directionBalancer;
     private void Update()
     {
          
@@ -63,7 +64,8 @@ public class Astronaut : MonoBehaviour
         
         if (moveTimer > 0)
         {
-            body.velocity = new Vector2(3 * ((Convert.ToInt32(moveDirection) - 0.5f) * 2), body.velocity.y);  // convert transforma bool in int 0 sau 1
+            body.velocity = new Vector2(3 * ((Convert.ToInt32(moveDirection) - 0.5f) * 2), body.velocity.y); // convert transforma bool in int 0 sau 1
+            Debug.Log("Astronaut moved: " + body.velocity.x + ". Is facing right? " + moveDirection + ". new average movement direction value: "+ directionBalancer/2);
         }
         
         if (moveTimer <= 0)
@@ -75,7 +77,10 @@ public class Astronaut : MonoBehaviour
         if(moveTimer <= -1)
         {
             moveTimer = Random.value * 2 + 1.5f;
-            moveDirection = (Random.value - 0.5f) > 0;
+            
+            
+            moveDirection = (Random.value - 0.5f + directionBalancer/4) > 0;
+            directionBalancer = 0 - (Convert.ToInt32(moveDirection) - 0.5f) * 2;
         }
         animator.SetFloat("Speed", Mathf.Abs(body.velocity.x));
     }
