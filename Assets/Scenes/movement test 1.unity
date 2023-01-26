@@ -11346,7 +11346,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.53900003, y: 0.45800003}
   m_AnchorMax: {x: 0.53900003, y: 0.45800003}
-  m_AnchoredPosition: {x: -571.52057, y: -227.67}
+  m_AnchoredPosition: {x: -574.11, y: -227.67}
   m_SizeDelta: {x: 4.187, y: 0.7101}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1022570134
@@ -25577,11 +25577,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1775286494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c3bc1031c95b9649ae099152ae0a395, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d0291d5c5a015b4b81b032710fa1810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: fe64160447a13b746a2eeefbe3c00d9f, type: 2}
-  resolutionDropdown: {fileID: 163914715}
+  pauseMenuUI: {fileID: 388640136}
+  settingsMenuUI: {fileID: 2127542367}
 --- !u!1 &1806131132
 GameObject:
   m_ObjectHideFlags: 0
