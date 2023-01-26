@@ -13,7 +13,4 @@ public class Map : MonoBehaviour
     public void LevelOne() {
         SceneManager.LoadScene("level 1");
     }
-    public void QuitGame() {
-        Application.Quit();
-    }
 }
