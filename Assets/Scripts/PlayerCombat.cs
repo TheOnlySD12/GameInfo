@@ -18,7 +18,7 @@ public class PlayerCombat : MonoBehaviour
     }
 
     [SerializeField] public Rigidbody2D rb;
-    private float bouncePower = 14f;
+    private float bouncePower = 8f;
 
     public Animator animator;
 

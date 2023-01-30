@@ -54,7 +54,7 @@ public class Ladder_Climb : MonoBehaviour
         }
         if (!isClimbing && !Movement.isDashing)
         {
-            rb.gravityScale = 4f;
+            rb.gravityScale = 3.8f;
         }
 
     }
