@@ -156,7 +156,7 @@ public class Movement : MonoBehaviour
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         yield return new WaitForSeconds(dashingTime);
-        rb.gravityScale = 4f;
+        rb.gravityScale = 2f;
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
