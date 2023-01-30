@@ -35,6 +35,7 @@ public class PauseMenu : MonoBehaviour {
     public void Quit(){
         Time.timeScale = 1f;
         GameIsPaused = false;
+        // PlayerCombat.SavePlayer();
         SceneManager.LoadScene("Map");
     }
 }
