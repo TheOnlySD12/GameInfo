@@ -51,7 +51,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     public Transform ceelingCheck;
 
-    public static void SavePlayer() {
+    public void SavePlayer() {
         SaveSystem.SavePlayer(this);
     }
 
