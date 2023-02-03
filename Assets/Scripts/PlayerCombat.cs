@@ -14,6 +14,7 @@ public class PlayerCombat : MonoBehaviour
             position.x = data.position[0];
             position.y = data.position[1];
             transform.position = position;
+            Debug.Log("hopa maii");
         }
     }
 
@@ -52,7 +53,9 @@ public class PlayerCombat : MonoBehaviour
     public Transform ceelingCheck;
 
     public void SavePlayer() {
+        //Rezolvat din Inspector pentru ca am creier mare
         SaveSystem.SavePlayer(this);
+        Debug.Log("hopa breee");
     }
 
     // Update is called once per frame

@@ -33,9 +33,9 @@ public class PauseMenu : MonoBehaviour {
     }
 
     public void Quit(){
+        //Save e rezolvat din inspector pentru ca am creier mare
         Time.timeScale = 1f;
         GameIsPaused = false;
-        // PlayerCombat.SavePlayer();
         SceneManager.LoadScene("Map");
     }
 }

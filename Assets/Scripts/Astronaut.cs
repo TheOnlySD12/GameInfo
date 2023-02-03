@@ -65,7 +65,7 @@ public class Astronaut : MonoBehaviour
         if (moveTimer > 0)
         {
             body.velocity = new Vector2(3 * ((Convert.ToInt32(moveDirection) - 0.5f) * 2), body.velocity.y); // convert transforma bool in int 0 sau 1
-            Debug.Log("Astronaut moved: " + body.velocity.x + ". Is facing right? " + moveDirection + ". new average movement direction value: "+ directionBalancer/2);
+            //Debug.Log("Astronaut moved: " + body.velocity.x + ". Is facing right? " + moveDirection + ". new average movement direction value: "+ directionBalancer/2);
         }
         
         if (moveTimer <= 0)
