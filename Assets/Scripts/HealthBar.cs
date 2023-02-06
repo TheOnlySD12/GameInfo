@@ -10,10 +10,10 @@ public class HealthBar : MonoBehaviour
     public Gradient gradient;
     public Image fill;
 
-    public void SetMaxHealth(int health)
+    public void SetMaxHealth(int maxHealth)
     {
-        slider.maxValue = health;
-        slider.value = health;
+        slider.maxValue = maxHealth;
+        slider.value = maxHealth;
 
         fill.color = gradient.Evaluate(1f);
     }

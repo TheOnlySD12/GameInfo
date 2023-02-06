@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    // Acest script nu mai este folosit, l-am pastrat doar in caz ca apar erori atunci cand il mut in PlayerCombat, unde este si acum.
+
     public int maxHealth = 200;
     int currentHealth;
     public GameObject InamicFunctieDestroy;

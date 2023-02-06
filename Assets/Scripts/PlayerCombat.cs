@@ -10,11 +10,13 @@ public class PlayerCombat : MonoBehaviour
     private void Start() {
         if (File.Exists(Application.persistentDataPath + "/player.ugabuga")) {
             PlayerData data = SaveSystem.LoadPlayer();
+            currentHealth = data.health;
+            healthBar.SetHealth(data.health);
             Vector2 position;
             position.x = data.position[0];
             position.y = data.position[1];
             transform.position = position;
-            Debug.Log("hopa maii");
+            Debug.Log("Loaded Save");
         }
     }
 
@@ -52,10 +54,17 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     public Transform ceelingCheck;
 
+    public int maxHealth = 200;
+    // Trebuie sa fie public ca sa il accesez din PlayerData
+    public int currentHealth;
+    public GameObject InamicFunctieDestroy;
+    public float delayMoarte;
+    public HealthBar healthBar;
+
     public void SavePlayer() {
         //Rezolvat din Inspector pentru ca am creier mare
         SaveSystem.SavePlayer(this);
-        Debug.Log("hopa breee");
+        Debug.Log("Saved Game");
     }
 
     // Update is called once per frame
@@ -248,5 +257,25 @@ public class PlayerCombat : MonoBehaviour
     public bool UnderCeeling()
     {
         return Physics2D.OverlapCircle(ceelingCheck.position, 0.2f, groundLayer);
+    }
+
+    public void TakeBulletDamage(int enemydamage)
+    {
+
+        currentHealth -= enemydamage;
+        animator.SetTrigger("Hit");
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+        healthBar.SetHealth(currentHealth);
+    }
+
+    void Die()
+    {
+
+        Debug.Log("Enemy died!");
+        Destroy(InamicFunctieDestroy, delayMoarte);
+
     }
 }
