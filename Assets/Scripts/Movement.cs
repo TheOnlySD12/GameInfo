@@ -41,6 +41,8 @@ public class Movement : MonoBehaviour
 
     public Animator animator;
 
+    bool wallClimbAble;
+
 
     void Start()
     {
@@ -203,7 +205,11 @@ public class Movement : MonoBehaviour
         // }
     }
 
+    void WallClimb()
+    {
 
+
+    }
 
 
 
