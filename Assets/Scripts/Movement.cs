@@ -37,9 +37,14 @@ public class Movement : MonoBehaviour
     private float dashingTime = 0.2f;
     private float dashingCooldown = 0.3f;
 
+
+
+
     public Transform ceelingCheck;
 
     public Animator animator;
+
+ 
 
 
     void Start()
@@ -195,6 +200,7 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("Collision!!");
             transform.position = respawnPoint.position;
+            
 
         }
         //if (collision.tag == "NextLevelPlace")
