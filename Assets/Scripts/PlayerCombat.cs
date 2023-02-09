@@ -23,6 +23,8 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] public Rigidbody2D rb;
     private float bouncePower = 8f;
 
+    public GameObject player;
+
     public Transform respawnPoint;
 
     public Animator animator;
@@ -73,7 +75,13 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        respawnTimer -= Time.deltaTime;
+
+        if (respawnTimer<=0)
+        {
+            PlayerRespawn();
+            respawnTimer = 5f;
+        }
+
         if (Input.GetKeyDown(KeyCode.UpArrow))//detecteaza daca se uita in sus
         {
             lookingUp = true;
@@ -269,7 +277,7 @@ public class PlayerCombat : MonoBehaviour
 
         currentHealth -= enemydamage;
         animator.SetTrigger("Hit");
-        if (currentHealth <= 0 && respawnTimer <= 0)
+        if (currentHealth <= 0)
         {
             PlayerDie();
         }
@@ -279,9 +287,15 @@ public class PlayerCombat : MonoBehaviour
 
     void PlayerDie()
     {
-        respawnTimer = 5f;
-        Debug.Log("player DIE");
-        transform.position = respawnPoint.position;
+        Debug.Log("player DIED");
+        Destroy(gameObject);
+        respawnTimer-= Time.deltaTime;
+
+    }
+
+    void PlayerRespawn()
+    {
+        Instantiate(gameObject, respawnPoint.position, respawnPoint.rotation);
         currentHealth = maxHealth;
     }
 
