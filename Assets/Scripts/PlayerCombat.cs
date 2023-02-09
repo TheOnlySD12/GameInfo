@@ -23,6 +23,8 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] public Rigidbody2D rb;
     private float bouncePower = 8f;
 
+    public Transform respawnPoint;
+
     public Animator animator;
 
     public Transform attackPoint;
@@ -50,6 +52,8 @@ public class PlayerCombat : MonoBehaviour
 
     public int heavyAttackDamage = 15;
 
+    private float respawnTimer = 5f;
+
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     public Transform ceelingCheck;
@@ -57,7 +61,6 @@ public class PlayerCombat : MonoBehaviour
     public int maxHealth = 200;
     // Trebuie sa fie public ca sa il accesez din PlayerData
     public int currentHealth;
-    public GameObject InamicFunctieDestroy;
     public float delayMoarte;
     public HealthBar healthBar;
 
@@ -70,6 +73,7 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        respawnTimer -= Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.UpArrow))//detecteaza daca se uita in sus
         {
             lookingUp = true;
@@ -154,6 +158,7 @@ public class PlayerCombat : MonoBehaviour
                 }
             }
         }
+
     }
 
     void Attack()//atac normal
@@ -264,18 +269,20 @@ public class PlayerCombat : MonoBehaviour
 
         currentHealth -= enemydamage;
         animator.SetTrigger("Hit");
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && respawnTimer <= 0)
         {
-            Die();
+            PlayerDie();
         }
         healthBar.SetHealth(currentHealth);
     }
 
-    void Die()
+
+    void PlayerDie()
     {
-
-        Debug.Log("Enemy died!");
-        Destroy(InamicFunctieDestroy, delayMoarte);
-
+        respawnTimer = 5f;
+        Debug.Log("player DIE");
+        transform.position = respawnPoint.position;
+        currentHealth = maxHealth;
     }
+
 }

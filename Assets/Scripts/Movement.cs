@@ -199,10 +199,7 @@ public class Movement : MonoBehaviour
             transform.position = respawnPoint.position;
 
         }
-        //if (collision.tag == "NextLevelPlace")
-        //  {
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        // }
+        
     }
 
     void WallClimb()
