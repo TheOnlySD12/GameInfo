@@ -170,9 +170,10 @@ public class PlayerCombat : MonoBehaviour
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
             foreach (Collider2D enemy in hitEnemies)
             {
-
-                enemy.GetComponent<GenericEnemy>().TakeDamage(attackDamage);
-
+                if (!enemy.isTrigger)
+                {
+                    enemy.GetComponent<GenericEnemy>().TakeDamage(attackDamage);
+                }
             }
         }   
     }
@@ -184,8 +185,11 @@ public class PlayerCombat : MonoBehaviour
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
             foreach (Collider2D enemy in hitEnemies)
             {
+                if (!enemy.isTrigger)
+                {
+                    enemy.GetComponent<GenericEnemy>().TakeDamage(attackDamage);
+                }
 
-                enemy.GetComponent<GenericEnemy>().TakeDamage(attackDamage);
 
             }
         }
@@ -196,9 +200,12 @@ public class PlayerCombat : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(downAirAttackPoint.position, downAirAttackRange, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
+            if (!enemy.isTrigger)
+            {
+                enemy.GetComponent<GenericEnemy>().TakeDamage(attackDamage);
+                rb.velocity = new Vector2(rb.velocity.x, bouncePower);
+            }
 
-            enemy.GetComponent<GenericEnemy>().TakeDamage(attackDamage);
-            rb.velocity = new Vector2(rb.velocity.x, bouncePower);
         }
     }
 
@@ -208,7 +215,10 @@ public class PlayerCombat : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
 
-            enemy.GetComponent<GenericEnemy>().TakeUpDamage(attackDamage);
+            if (!enemy.isTrigger)
+            {
+                enemy.GetComponent<GenericEnemy>().TakeUpDamage(attackDamage);
+            }
         }
     }
 
@@ -221,7 +231,10 @@ public class PlayerCombat : MonoBehaviour
             foreach (Collider2D enemy in hitEnemies)
             {
 
-                enemy.GetComponent<GenericEnemy>().TakeDamage(heavyAttackDamage);
+                if (!enemy.isTrigger)
+                {
+                    enemy.GetComponent<GenericEnemy>().TakeDamage(heavyAttackDamage);
+                }
 
             }
         }
@@ -238,7 +251,10 @@ public class PlayerCombat : MonoBehaviour
             foreach (Collider2D enemy in hitEnemies)
             {
 
-                enemy.GetComponent<GenericEnemy>().TakeDamage(attackDamage + 5);
+                if (!enemy.isTrigger)
+                {
+                    enemy.GetComponent<GenericEnemy>().TakeDamage(attackDamage +5);
+                }
 
 
 
