@@ -75,13 +75,6 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (respawnTimer<=0)
-        {
-            PlayerRespawn();
-            respawnTimer = 5f;
-        }
-
         if (Input.GetKeyDown(KeyCode.UpArrow))//detecteaza daca se uita in sus
         {
             lookingUp = true;
@@ -287,16 +280,13 @@ public class PlayerCombat : MonoBehaviour
 
     void PlayerDie()
     {
-        Debug.Log("player DIED");
-        Destroy(gameObject);
-        respawnTimer-= Time.deltaTime;
-
-    }
-
-    void PlayerRespawn()
-    {
-        Instantiate(gameObject, respawnPoint.position, respawnPoint.rotation);
+        Debug.Log("Player died");
+        gameObject.SetActive(false);
+        while (respawnTimer > 0)
+        {
+            respawnTimer -= Time.deltaTime;
+        }
+        gameObject.SetActive(true);
         currentHealth = maxHealth;
     }
-
 }
