@@ -65,6 +65,7 @@ public class PlayerCombat : MonoBehaviour
     public int currentHealth;
     public float delayMoarte;
     public HealthBar healthBar;
+    public bool isPlayerDead = false;
 
     public void SavePlayer() {
         //Rezolvat din Inspector pentru ca am creier mare
@@ -75,6 +76,26 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("isPlayerDead = " + isPlayerDead);
+        if (isPlayerDead)
+        {
+            Debug.Log("mama sita");
+            if (respawnTimer > 0)
+            {
+                respawnTimer = respawnTimer - Time.deltaTime;
+                Debug.Log("tamergon");
+            }
+            else 
+            {
+                Debug.Log("rispaun cica");
+                isPlayerDead = false;
+                respawnTimer = 5f;
+                gameObject.SetActive(true);
+                currentHealth = maxHealth;
+                healthBar.SetMaxHealth(maxHealth);
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.UpArrow))//detecteaza daca se uita in sus
         {
             lookingUp = true;
@@ -290,19 +311,15 @@ public class PlayerCombat : MonoBehaviour
         {
             PlayerDie();
         }
-        healthBar.SetHealth(currentHealth);
     }
 
 
     void PlayerDie()
     {
         Debug.Log("Player died");
+        // healthBar.SetHealth(0);
         gameObject.SetActive(false);
-        while (respawnTimer > 0)
-        {
-            respawnTimer -= Time.deltaTime;
-        }
-        gameObject.SetActive(true);
-        currentHealth = maxHealth;
+        isPlayerDead = true;
+        Debug.Log("isPlayerDead = " + isPlayerDead);
     }
 }
