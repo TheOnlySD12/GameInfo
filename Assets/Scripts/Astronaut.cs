@@ -19,12 +19,14 @@ public class Astronaut : MonoBehaviour
 
     public Animator animator;
     bool facingRight;
+    List<Collider2D> wallsInFrontOf;
 
     private void Start()
     {
         body = GetComponent<Rigidbody2D>();
         moveTimer = (Random.value + 0.5f) * 1.5f;
         moveDuration = (Random.value + 0.5f) * 1.5f;
+        wallsInFrontOf = new List<Collider2D>();
     }
     
     private void FixedUpdate()
@@ -33,6 +35,7 @@ public class Astronaut : MonoBehaviour
         {
             Debug.Log("Astronaut: I can walk");
             transform.Translate(Vector2.left * Time.deltaTime);
+
         }
         
     }
@@ -83,9 +86,33 @@ public class Astronaut : MonoBehaviour
             directionBalancer = 0 - (Convert.ToInt32(moveDirection) - 0.5f) * 2;
         }
         animator.SetFloat("Speed", Mathf.Abs(body.velocity.x));
+
+        Debug.Log(wallsInFrontOf);
+
+    }
+    private void OnTriggerStay2D(Collider2D wallSeen)
+    {
+        if(wallSeen != null)
+        {
+            wallsInFrontOf.Add(wallSeen);
+        }
+        
+        
+        
+    }
+    private void OnTriggerExit2D(Collider2D wallGone)
+    {
+        wallsInFrontOf.Remove(wallGone); //cum scot colliderele din lista odata ce nu mai ating trigger-ul?????
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (wallsInFrontOf.Contains(collision.collider))
+        {
+            Flip();
+            moveDirection = !moveDirection;
+        }
     }
 
-    
     private void Flip()
     {
 
@@ -94,17 +121,6 @@ public class Astronaut : MonoBehaviour
         transform.Rotate(0f,180f,0f);
     }
     
-    /*void Walk(float x)
-    {
-        moveDuration = Mathf.Abs(x);
-        Debug.Log("moveDuration = " + moveDuration);
-        while (moveDuration > 0)
-        {
-            body.velocity = Vector2.right * x;
-            moveDuration -= Time.deltaTime;
-        }
-        //body.velocity = Vector2.zero;
-        Debug.Log("Astronaut moved" + body.velocity.x);
-    }*/
+    
     
 }
