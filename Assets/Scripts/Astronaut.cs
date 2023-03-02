@@ -106,8 +106,12 @@ public class Astronaut : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Astronaut collided!");
+        
         if (wallsInFrontOf.Contains(collision.collider))
         {
+            Debug.Log("should have Flip()ped");
+            
             Flip();
             moveDirection = !moveDirection;
         }

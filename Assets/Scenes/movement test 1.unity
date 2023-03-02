@@ -2950,11 +2950,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6307379906861259449, guid: 4602507bddd51df4fa19e970c7d3b5dd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -49.643
+      value: -67.5
       objectReference: {fileID: 0}
     - target: {fileID: 6307379906861259449, guid: 4602507bddd51df4fa19e970c7d3b5dd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.715
+      value: 6.21
       objectReference: {fileID: 0}
     - target: {fileID: 6307379906861259449, guid: 4602507bddd51df4fa19e970c7d3b5dd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -27207,6 +27207,7 @@ MonoBehaviour:
   currentHealth: 0
   delayMoarte: 0
   healthBar: {fileID: 0}
+  isPlayerDead: 0
 --- !u!114 &1684990528
 MonoBehaviour:
   m_ObjectHideFlags: 0
