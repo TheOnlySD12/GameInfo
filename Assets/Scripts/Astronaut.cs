@@ -87,7 +87,7 @@ public class Astronaut : MonoBehaviour
         }
         animator.SetFloat("Speed", Mathf.Abs(body.velocity.x));
 
-        Debug.Log(wallsInFrontOf);
+        //Debug.Log(wallsInFrontOf);
 
     }
     private void OnTriggerStay2D(Collider2D wallSeen)

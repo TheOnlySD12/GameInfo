@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO;
 using UnityEngine.Animations;
+
 
 public class PlayerCombat : MonoBehaviour
 {
@@ -54,7 +56,6 @@ public class PlayerCombat : MonoBehaviour
 
     public int heavyAttackDamage = 15;
 
-    private float respawnTimer = 5f;
 
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -63,9 +64,8 @@ public class PlayerCombat : MonoBehaviour
     public int maxHealth = 200;
     // Trebuie sa fie public ca sa il accesez din PlayerData
     public int currentHealth;
-    public float delayMoarte;
     public HealthBar healthBar;
-    public bool isPlayerDead = false;
+
 
     public void SavePlayer() {
         //Rezolvat din Inspector pentru ca am creier mare
@@ -73,28 +73,11 @@ public class PlayerCombat : MonoBehaviour
         Debug.Log("Saved Game");
     }
 
+
+    
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("isPlayerDead = " + isPlayerDead);
-        if (isPlayerDead)
-        {
-            Debug.Log("mama sita");
-            if (respawnTimer > 0)
-            {
-                respawnTimer = respawnTimer - Time.deltaTime;
-                Debug.Log("tamergon");
-            }
-            else 
-            {
-                Debug.Log("rispaun cica");
-                isPlayerDead = false;
-                respawnTimer = 5f;
-                gameObject.SetActive(true);
-                currentHealth = maxHealth;
-                healthBar.SetMaxHealth(maxHealth);
-            }
-        }
 
         if (Input.GetKeyDown(KeyCode.UpArrow))//detecteaza daca se uita in sus
         {
@@ -317,9 +300,12 @@ public class PlayerCombat : MonoBehaviour
     void PlayerDie()
     {
         Debug.Log("Player died");
-        // healthBar.SetHealth(0);
-        gameObject.SetActive(false);
-        isPlayerDead = true;
-        Debug.Log("isPlayerDead = " + isPlayerDead);
+        rb.bodyType = RigidbodyType2D.Static;
+        animator.SetTrigger("death"); //asa sa se numeasca animatia
+    }
+
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
