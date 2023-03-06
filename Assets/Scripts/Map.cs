@@ -6,6 +6,10 @@ using System.IO;
 
 public class Map : MonoBehaviour
 {
+    private void Start(){
+        // aici va da load la map din save ul folosit
+    }
+
     public void Back() {
         SceneManager.LoadScene("SavesMenu");
     }
