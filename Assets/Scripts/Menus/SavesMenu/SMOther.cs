@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using System.IO;
 
 public class SMOther : MonoBehaviour {
-    public int MapData;
+    public static int SaveNumber;
 
     public void QuitGame(){
         Application.Quit();
@@ -18,9 +18,10 @@ public class SMOther : MonoBehaviour {
     public void LoadMap(int save){
         if (File.Exists(Application.persistentDataPath + "/save-" + save + ".ugabuga"))
         {
-           // mai am de facut implementare
-           Debug.Log("Save exists");
-           SceneManager.LoadScene("Map");
+            // mai am de facut implementare
+            SaveNumber = save;
+            Debug.Log("Save exists");
+            SceneManager.LoadScene("Map");
         }
         Debug.Log("Save doesn't exist.");
         // Aici sistemul va fi mai destept in viitor, va scane pentru save-uri reale si le va arata

@@ -7,22 +7,22 @@ public class SaveSystem{
      
     public static void SavePlayer(PlayerCombat player){
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/player.ugabuga";
+        string path = Application.persistentDataPath + "/save-" +  SMOther.SaveNumber + ".ugabuga";
         FileStream stream = new FileStream(path, FileMode.Create);
-        PlayerData data = new PlayerData(player);
+        GameData data = new GameData(player);
 
         formatter.Serialize(stream, data);
         stream.Close();
     }
 
-    public static PlayerData LoadPlayer(){
-        string path = Application.persistentDataPath + "/player.ugabuga";
+    public static GameData LoadPlayer(){
+        string path = Application.persistentDataPath + "/save-" + SMOther.SaveNumber + ".ugabuga";
 
         if(File.Exists(path)) {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
-            PlayerData data = formatter.Deserialize(stream) as PlayerData;
+            GameData data = formatter.Deserialize(stream) as GameData;
             stream.Close();
 
             return data;

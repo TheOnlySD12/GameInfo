@@ -10,20 +10,22 @@ using UnityEngine.Animations;
 public class PlayerCombat : MonoBehaviour
 {
     private void Start() {
-        if (File.Exists(Application.persistentDataPath + "/player.ugabuga")) {
-            PlayerData data = SaveSystem.LoadPlayer();
-            currentHealth = data.health;
-            healthBar.SetHealth(data.health);
+        /*if (File.Exists(Application.persistentDataPath + "/player.ugabuga")) {
+            GameData data = SaveSystem.LoadPlayer();
+            currentHealth = data.player_health;
+            healthBar.SetHealth(data.player_health);
             Vector2 position;
             position.x = data.position[0];
             position.y = data.position[1];
             transform.position = position;
             Debug.Log("Loaded Save");
-        }
+        }*/
     }
 
     [SerializeField] public Rigidbody2D rb;
     private float bouncePower = 8f;
+
+    public int checkpoint;
 
     public GameObject player;
 

@@ -7,7 +7,11 @@ using System.IO;
 public class Map : MonoBehaviour
 {
     private void Start(){
-        // aici va da load la map din save ul folosit
+        if (File.Exists(Application.persistentDataPath + "/player.ugabuga")) {
+            GameData data = SaveSystem.LoadPlayer();
+            // nu mai am timp
+            Debug.Log("Loaded Save");
+        }
     }
 
     public void Back() {
