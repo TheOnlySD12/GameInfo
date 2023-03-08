@@ -289,6 +289,7 @@ public class PlayerCombat : MonoBehaviour
     {
 
         currentHealth -= enemydamage;
+        healthBar.SetHealth(currentHealth);
         animator.SetTrigger("Hit");
         if (currentHealth <= 0)
         {
