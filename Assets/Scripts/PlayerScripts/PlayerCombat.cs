@@ -9,8 +9,8 @@ using UnityEngine.Animations;
 
 public class PlayerCombat : MonoBehaviour
 {
-    private void Start() {
-        /*if (File.Exists(Application.persistentDataPath + "/player.ugabuga")) {
+    /*private void Start() {
+        if (File.Exists(Application.persistentDataPath + "/player.ugabuga")) {
             GameData data = SaveSystem.LoadPlayer();
             currentHealth = data.player_health;
             healthBar.SetHealth(data.player_health);
@@ -19,17 +19,17 @@ public class PlayerCombat : MonoBehaviour
             position.y = data.position[1];
             transform.position = position;
             Debug.Log("Loaded Save");
-        }*/
-    }
+        }
+    }*/
 
     [SerializeField] public Rigidbody2D rb;
     private float bouncePower = 8f;
 
     public int checkpoint;
 
-    public GameObject player;
+    
 
-    public Transform respawnPoint;
+    
 
     public Animator animator;
 
@@ -64,9 +64,15 @@ public class PlayerCombat : MonoBehaviour
     public Transform ceelingCheck;
 
     public int maxHealth = 200;
-    // Trebuie sa fie public ca sa il accesez din PlayerData
+    // Trebuie sa fie public ca sa il accesez din GameData
     public int currentHealth;
     public HealthBar healthBar;
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+        
+    }
 
 
     public void SavePlayer() {
@@ -81,7 +87,7 @@ public class PlayerCombat : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))//detecteaza daca se uita in sus
+        /*if (Input.GetKeyDown(KeyCode.UpArrow))//detecteaza daca se uita in sus
         {
             lookingUp = true;
         }
@@ -89,14 +95,14 @@ public class PlayerCombat : MonoBehaviour
         {
             lookingUp = false;
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))//detecteaza daca se uita in jos
+        if (Input.GetKeyDown(KeyCode.DownArrow))//detecteaza daca se uita in jos // efectiv Input.GetAxis("Vertical") < 0
         {
             lookingDown = true;
         }
         if (Input.GetKeyUp(KeyCode.DownArrow))
         {
             lookingDown = false;
-        }
+        }*/
         if (!IsGrounded())
         {
             if (Input.GetKeyDown(KeyCode.X) && attackCooldown <= 0 && !lookingDown && !lookingUp)
@@ -130,7 +136,7 @@ public class PlayerCombat : MonoBehaviour
         // Determine if it can attack and the type of the attack
         if (IsGrounded() && !UnderCeeling())                     // can attack only if it's not jumping
         {
-            if(Input.GetKeyDown(KeyCode.X) && lookingUp)
+            if(Input.GetKeyDown(KeyCode.X) && Input.GetAxisRaw("Vertical") < 0)
             {
                 UpAirAttack();
             }
