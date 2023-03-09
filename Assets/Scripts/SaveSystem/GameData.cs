@@ -8,8 +8,8 @@ public class GameData  {
     //Checkpoint trebuie implementat in level
     public int checkpoint;
 
-    public GameData (PlayerCombat player) {
-        checkpoint = player.checkpoint;
+    public GameData (Map map_data) {
+        checkpoint = map_data.checkpoint;
     }
     
 }

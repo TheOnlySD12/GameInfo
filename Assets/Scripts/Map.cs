@@ -2,19 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.IO;
 
-public class Map : MonoBehaviour
-{
+public class Map : MonoBehaviour{
+    public int checkpoint;
+
     private void Start(){
-        if (File.Exists(Application.persistentDataPath + "/player.ugabuga")) {
-            GameData data = SaveSystem.LoadPlayer();
-            // nu mai am timp
-            Debug.Log("Loaded Save");
-        }
+        GameData data = SaveSystem.LoadPlayerData();
+        checkpoint = data.checkpoint;
+        Debug.Log("Loaded Save");
     }
 
     public void Back() {
+        SaveSystem.SaveGameData(this);
         SceneManager.LoadScene("SavesMenu");
     }
 

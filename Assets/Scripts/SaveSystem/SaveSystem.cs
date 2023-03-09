@@ -3,19 +3,20 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 //Cod direct de la Brackeys nu are erori nu schimbati cred ca o sa corupa din cauza fisierului
+//Balaton este un lighean murdar
 public class SaveSystem{
      
-    public static void SavePlayer(PlayerCombat player){
+    public static void SaveGameData(Map map_data){
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/save-" +  SMOther.SaveNumber + ".ugabuga";
         FileStream stream = new FileStream(path, FileMode.Create);
-        GameData data = new GameData(player);
+        GameData data = new GameData(map_data);
 
         formatter.Serialize(stream, data);
         stream.Close();
     }
 
-    public static GameData LoadPlayer(){
+    public static GameData LoadPlayerData(){
         string path = Application.persistentDataPath + "/save-" + SMOther.SaveNumber + ".ugabuga";
 
         if(File.Exists(path)) {
