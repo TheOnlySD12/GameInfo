@@ -8,6 +8,7 @@ public class SaveSystem{
      
     public static void SaveGameData(Map map_data){
         BinaryFormatter formatter = new BinaryFormatter();
+        Debug.Log("SaveNumber = " + SMOther.SaveNumber);
         string path = Application.persistentDataPath + "/save-" +  SMOther.SaveNumber + ".ugabuga";
         FileStream stream = new FileStream(path, FileMode.Create);
         GameData data = new GameData(map_data);

@@ -7,9 +7,16 @@ public class Map : MonoBehaviour{
     public int checkpoint;
 
     private void Start(){
-        GameData data = SaveSystem.LoadPlayerData();
-        checkpoint = data.checkpoint;
-        Debug.Log("Loaded Save");
+        if (SMOther.CreateSave){
+            SaveSystem.SaveGameData(this);
+            SMOther.CreateSave = false;
+            Debug.Log("Created Save");
+        } else
+        {
+            GameData data = SaveSystem.LoadPlayerData();
+            checkpoint = data.checkpoint;
+            Debug.Log("Loaded Save");
+        }
     }
 
     public void Back() {

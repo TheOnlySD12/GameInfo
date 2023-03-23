@@ -73,15 +73,6 @@ public class PlayerCombat : MonoBehaviour
         animator = GetComponent<Animator>();
         
     }
-
-
-    public void SavePlayer() {
-        //Rezolvat din Inspector pentru ca am creier mare
-        SaveSystem.SavePlayer(this);
-        Debug.Log("Saved Game");
-    }
-
-
     
     // Update is called once per frame
     void Update()
