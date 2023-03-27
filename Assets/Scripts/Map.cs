@@ -2,15 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.IO;
 
-public class Map : MonoBehaviour
-{
+public class Map : MonoBehaviour{
+    public int checkpoint;
+
     private void Start(){
-        // aici va da load la map din save ul folosit
+        if (SMOther.CreateSave){
+            SaveSystem.SaveGameData(this);
+            SMOther.CreateSave = false;
+            Debug.Log("Created Save");
+        } else
+        {
+            GameData data = SaveSystem.LoadPlayerData();
+            checkpoint = data.checkpoint;
+            Debug.Log("Loaded Save");
+        }
     }
 
     public void Back() {
+        SaveSystem.SaveGameData(this);
         SceneManager.LoadScene("SavesMenu");
     }
 
