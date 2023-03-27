@@ -5,8 +5,9 @@ using UnityEngine;
 //Cod direct de la Brackeys nu are erori nu schimbati cred ca o sa corupa din cauza fisierului
 //Balaton este un lighean murdar
 public class SaveSystem{
-     
-    public static void SaveGameData(Map map_data){
+    public static string path = Application.persistentDataPath + "/save-" + SMOther.SaveNumber + ".ugabuga";
+
+    public static void SaveGameData(SMInfo map_data){
         BinaryFormatter formatter = new BinaryFormatter();
         Debug.Log("SaveNumber = " + SMOther.SaveNumber);
         string path = Application.persistentDataPath + "/save-" +  SMOther.SaveNumber + ".ugabuga";

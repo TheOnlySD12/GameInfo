@@ -80,7 +80,7 @@ public class PlayerCombat : MonoBehaviour
 
         /*if (Input.GetKeyDown(KeyCode.UpArrow))//detecteaza daca se uita in sus
         {
-            lookingUp = true;
+            lookingUp = true; jos ungaria
         }
         if (Input.GetKeyUp(KeyCode.UpArrow))
         {

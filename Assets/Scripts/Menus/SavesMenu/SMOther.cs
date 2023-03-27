@@ -16,19 +16,16 @@ public class SMOther : MonoBehaviour {
         SceneManager.LoadScene("SavesMenu");
     }
 
-    public void LoadMap(int save){
+    public void LoadSave(int save){
         if (File.Exists(Application.persistentDataPath + "/save-" + save + ".ugabuga"))
         {
-            // mai am de facut implementare
             SaveNumber = save;
             Debug.Log("Save exists");
-            SceneManager.LoadScene("Map");
         } else
         {
             SaveNumber = save;
             CreateSave = true;
-            SceneManager.LoadScene("Map");
-            Debug.Log("Save didn't exist, created one.");
+            Debug.Log("Save doesn't exist");
         }
         // Aici sistemul va fi mai destept in viitor, va scane pentru save-uri reale si le va arata
     }

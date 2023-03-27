@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
+//Sekelyland nu exista
 public class GameData  {
 
     //Checkpoint trebuie implementat in level
     public int checkpoint;
 
-    public GameData (Map map_data) {
+    public GameData (SMInfo map_data) {
         checkpoint = map_data.checkpoint;
     }
     

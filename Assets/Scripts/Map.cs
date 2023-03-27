@@ -7,21 +7,11 @@ public class Map : MonoBehaviour{
     public int checkpoint;
 
     private void Start(){
-        if (SMOther.CreateSave){
-            SaveSystem.SaveGameData(this);
-            SMOther.CreateSave = false;
-            Debug.Log("Created Save");
-        } else
-        {
-            GameData data = SaveSystem.LoadPlayerData();
-            checkpoint = data.checkpoint;
-            Debug.Log("Loaded Save");
-        }
+        // aici voi transforma dharta dupa checkpoint
     }
 
     public void Back() {
-        SaveSystem.SaveGameData(this);
-        SceneManager.LoadScene("SavesMenu");
+        SceneManager.LoadScene("SaveMenu");
     }
 
     public void LevelOne() {
