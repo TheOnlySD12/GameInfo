@@ -30,6 +30,7 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+            Destroy(gameObject);
         }
         healthBar.SetHealth(currentHealth);
     }
