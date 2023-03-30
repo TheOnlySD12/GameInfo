@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System.Diagnostics;
+using System.IO;
 
 public class SMInfo : MonoBehaviour{
     public TMP_Text Title;
@@ -15,16 +17,16 @@ public class SMInfo : MonoBehaviour{
         {
             SaveSystem.SaveGameData(this);
             SMOther.CreateSave = false;
-            Debug.Log("Created Save");
+            UnityEngine.Debug.Log("Created Save");
         }
         else
         {
             GameData data = SaveSystem.LoadPlayerData();
             checkpoint = data.checkpoint;
-            Debug.Log("Loaded Save");
+            UnityEngine.Debug.Log("Loaded Save");
         }
         Title.text = "Save " + SMOther.SaveNumber;
-        Info.text = "Checkpoint = " + checkpoint;
+        Info.text = "Checkpoint = " + checkpoint + "\nJos Ungaria \nTraiasca Romania Mare \nBalaton e un lighean murdar \nJos Sekelyland";
     }
 
     public void Load(){
@@ -32,11 +34,11 @@ public class SMInfo : MonoBehaviour{
     }
 
     public void OpenFile(){
-        //nu stiu exact cum dar o sa folosim path din SaveSystem care e static
+        Process.Start("explorer.exe", @SaveSystem.path);
     }
 
     public void Delete(){
-        //ca la openfile()
+        File.Delete(SaveSystem.path + "/save-" + SMOther.SaveNumber + ".ugabuga");
     }
 
     public void Back()

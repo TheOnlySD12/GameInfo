@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PauseMenuRaul.unity
     guid: d02c45f641ee31842805eae635e54a23
-  - enabled: 1
-    path: Assets/Scenes/SaveMoveTest.unity
-    guid: f7e31d40484b52e45bc943ddbbbaae1f
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
