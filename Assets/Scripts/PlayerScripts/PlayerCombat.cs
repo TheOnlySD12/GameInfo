@@ -25,6 +25,8 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] public Rigidbody2D rb;
     private float bouncePower = 8f;
 
+    [SerializeField] public Rigidbody2D enemyRb;
+
     public int checkpoint;
 
     
@@ -221,6 +223,7 @@ public class PlayerCombat : MonoBehaviour
             if (!enemy.isTrigger)
             {
                 enemy.GetComponent<GenericEnemy>().TakeUpDamage(attackDamage);
+                enemyRb.velocity = new Vector2(enemyRb.velocity.x, bouncePower);
             }
         }
     }
