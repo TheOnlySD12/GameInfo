@@ -8,6 +8,7 @@ public class Map : MonoBehaviour{
 
     private void Start(){
         // aici voi transforma dharta dupa checkpoint
+        // jos ungaria jos szekelyland
     }
 
     public void Back() {

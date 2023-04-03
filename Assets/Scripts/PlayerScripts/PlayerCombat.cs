@@ -6,22 +6,9 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using UnityEngine.Animations;
 
-
+// Jos Victor Orban
 public class PlayerCombat : MonoBehaviour
 {
-    /*private void Start() {
-        if (File.Exists(Application.persistentDataPath + "/player.ugabuga")) {
-            GameData data = SaveSystem.LoadPlayer();
-            currentHealth = data.player_health;
-            healthBar.SetHealth(data.player_health);
-            Vector2 position;
-            position.x = data.position[0];
-            position.y = data.position[1];
-            transform.position = position;
-            Debug.Log("Loaded Save");
-        }
-    }*/
-
     [SerializeField] public Rigidbody2D rb;
     private float bouncePower = 8f;
 
