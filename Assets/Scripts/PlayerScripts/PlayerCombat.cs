@@ -78,9 +78,9 @@ public class PlayerCombat : MonoBehaviour
     void Update()
     {
 
-        /*if (Input.GetKeyDown(KeyCode.UpArrow))//detecteaza daca se uita in sus
+        if (Input.GetKeyDown(KeyCode.UpArrow))//detecteaza daca se uita in sus
         {
-            lookingUp = true; jos ungaria
+            lookingUp = true; 
         }
         if (Input.GetKeyUp(KeyCode.UpArrow))
         {
@@ -93,7 +93,7 @@ public class PlayerCombat : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.DownArrow))
         {
             lookingDown = false;
-        }*/
+        }
         if (!IsGrounded())
         {
             if (Input.GetKeyDown(KeyCode.X) && attackCooldown <= 0 && !lookingDown && !lookingUp)
