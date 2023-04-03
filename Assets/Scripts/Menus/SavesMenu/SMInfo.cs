@@ -26,7 +26,7 @@ public class SMInfo : MonoBehaviour{
             UnityEngine.Debug.Log("Loaded Save");
         }
         Title.text = "Save " + SMOther.SaveNumber;
-        Info.text = "Checkpoint = " + checkpoint + "\nJos Ungaria \nTraiasca Romania Mare \nBalaton e un lighean murdar \nJos Sekelyland";
+        Info.text = "Checkpoint = " + checkpoint + "\nJos Ungaria \nTraiasca Romania Mare \nBalaton e un lighean murdar \nJos Szekelyland \nVictor Orban e handicapat";
     }
 
     public void Load(){

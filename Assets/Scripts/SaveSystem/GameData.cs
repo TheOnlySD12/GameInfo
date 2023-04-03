@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-//Sekelyland nu exista
+//Szekelyland nu exista
 public class GameData  {
 
     //Checkpoint trebuie implementat in level
